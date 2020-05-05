@@ -23,10 +23,9 @@ export default class MenuItem extends Component {
         )
     }
 }
-
 const styles = StyleSheet.create({
     menuItem: {
-        //width:'33.333333333%',
+        // width:'33.333333333%',
         height:"33%",
         padding:10,
         backgroundColor:'#F3BA36',

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet,Keyboard,TouchableWithoutFeedback,TouchableOpacity,ScrollView, Button} from "react-native";
+import { View, Text, StyleSheet,Keyboard,TouchableWithoutFeedback,TouchableOpacity,ScrollView, Button,ActivityIndicator,RefreshControl} from "react-native";
 import axios from "axios"
 import googleKey from "../env"
 import ShowDirectionScreen from "./ShowDirectionScreen"
 import Geolocation from 'react-native-geolocation-service'
-import { Rating } from "react-native-elements";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+//import { Rating } from "react-native-elements";
 
 export default class  HospitalScreen extends Component{
    constructor(props){
@@ -16,28 +15,35 @@ export default class  HospitalScreen extends Component{
            predictions:[],
            mapDetailResult:[],
            distanceResult:[],
+           Fetching:false,
+           refreshing:false,
           // combines:[]
        }
       // this.showDirectionsOnMap = this.showDirectionsOnMap.bind(this)
    }
    componentDidMount(){
        //continusoly get positon from user and stoping this dismount happens
-       Geolocation.watchPosition(
-           pos =>{
-                this.setState({
-                    userLatitude: pos.coords.latitude,
-                    userLongitude: pos.coords.longitude,
-                })
-                this.getPlaces()
-                
-            },
-            err => console.warn(err),
-            {
-                enableHighAccuracy: true
-            }
-        )
+      this.startWatch()
         }
+        startWatch(){
+            Geolocation.getCurrentPosition(
+                pos =>{
+                     this.setState({
+                         userLatitude: pos.coords.latitude,
+                         userLongitude: pos.coords.longitude,
+                     })
+                     this.getPlaces()
+     
+                 },
+                 err => console.warn(err),
+                 {
+                     enableHighAccuracy: true,distanceFilter: 1, timeout: 1000
+                 }
+             )
+        }
+       
         async getPlaces(){
+            this.setState({Fetching:true})
             const result = await axios.get(
             `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${googleKey.googleApiKey}&input=Hospital&location=${this.state.userLatitude},${this.state.userLongitude}&radius=2000`
             )
@@ -64,6 +70,7 @@ export default class  HospitalScreen extends Component{
                 dis.push(distesult.data.rows[0].elements)
                 //console.log(dis)
             }
+            this.setState({Fetching:false})
            //this.setState({distanceResult:dis})
             //console.log(this.state.distanceResult)
 
@@ -85,9 +92,11 @@ export default class  HospitalScreen extends Component{
         hideKeyboard(){
             Keyboard.dismiss()
         }
-      componentWillUnmount(){
-          Geolocation.clearWatch(this.locationWtchID)
-      }
+      
+
+    //   componentWillUnmount(){
+    //      // Geolocation.clearWatch(this.locationWtchID)
+    //   }
     
     
  // <Text style = {styles.MainTextStyle}>{this.state.distanceResult.map(d => (d.distance.text))}</Text>
@@ -106,7 +115,7 @@ export default class  HospitalScreen extends Component{
             <Text style = {styles.MainTextStyle}>{m.formatted_phone_number}</Text>
             <Text style={styles.textStyle}>Rating:</Text>
             <Text style = {styles.MainTextStyle}>{m.rating}</Text>
-            <Button title = "Direction"
+            <Button title = "Direction" color="#F3BA36"
             onPress={() => {
                 this.props.navigation.navigate({
                   routeName: "ShowDirection",
@@ -146,10 +155,12 @@ export default class  HospitalScreen extends Component{
                //const testDis = this.state.distanceResult.map(m => (m.duration.text))
 
     return(
-        
-        <ScrollView>
+        <View style={[styles.containerSpinner, styles.horizontalSpinner]}>
+        {this.state.Fetching ? <ActivityIndicator size="large"
+        color="#F3BA36"/>:<ScrollView>
         {displayMapDetail}
-        </ScrollView>
+        </ScrollView>}  
+        </View>
         // <ShowDirectionScreen 
         // showDirectionsOnMap={this.showDirectionsOnMap}
         // userLatitude = {this.state.userLatitude} 
@@ -169,6 +180,9 @@ const styles = StyleSheet.create({
     },
     map:{
         ...StyleSheet.absoluteFillObject
+    },
+    dirButton:{
+        backgroundColor: "grey"
     },
     gridItem: {
         flex: 1,
@@ -209,9 +223,17 @@ const styles = StyleSheet.create({
     MainTextStyle:{
         color:"#000",
         paddingBottom:10
-    }
+    },
+    containerSpinner: {
+        flex: 1,
+        justifyContent: "center"
+      },
+      horizontalSpinner: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10
+      }
 })
-
 // <PlaceInput 
 // //showDirectionsOnMap={this.showDirectionsOnMap}
 // userLatitude = {this.state.userLatitude} 

@@ -57,7 +57,8 @@ MachineDetailScreen.navigationOptions = (navigationData) =>{
 
 const styles = StyleSheet.create({
    txtStyles: {
-      fontSize: 16
+      fontSize: 16,
+      padding:5
    },
    image:{
       width :'100%',

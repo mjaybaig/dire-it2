@@ -25,14 +25,14 @@ export default class MainScreen extends Component{
                 })
             }}>
             </MenueItem>
-            <MenueItem icon='camera'
+            {/* <MenueItem icon='camera'
             iconName = "Machine Auto-Identify"
 
                 onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: "Camera",
                 })
-            }}/>
+            }}/> */}
            <MenueItem icon='hospital'
                 iconName ="Near By Hospitals"
                 onSelect = {() => {
@@ -52,14 +52,13 @@ MainScreen.navigationOptions = (navigationData) =>{
         headerTitle: 'Welcome To Dire'
     }
  }
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     overlayContainer:{
         flex:1,
         //backgroundColor:'rgba(47,163,218, .4)'
     },
     top:{
-        height:"50%",
+        height:"48%",
         alignItems:"center",
         justifyContent:"center",
     },
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
        // backgroundColor:'rgba(255,255,255, 0.8)',
     },
     menueContainer:{
-        height:"50%",
+        height:"55%",
         flexDirection:'column',
         //flexWrap:'wrap',
 

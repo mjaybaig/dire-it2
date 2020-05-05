@@ -30,11 +30,12 @@ const defaultStackOption = {
 //Main Navigator Stack navigation 
 const DireNavigator = createStackNavigator({
     FirstScreen : MainScreen,
-    MachineList: MachineListScreen,
-    MachineDetail : MachineDetailScreen,
-    Camera:CameraScreen,
     Hospitals:HospitalScreen,
     ShowDirection:ShowDirectionScreen,
+    MachineList: MachineListScreen,
+    MachineDetail : MachineDetailScreen,
+   // Camera:CameraScreen,
+    
     MachinePrecautions: MachinePrecautions
 
 },{
@@ -53,12 +54,12 @@ const TabListNavigator = createStackNavigator({
 })
 
 //Bottom Tab navigation when user clicks on camera screen
-const TabCamNavigator = createStackNavigator({
-  Camera:CameraScreen,
+// const TabCamNavigator = createStackNavigator({
+//   Camera:CameraScreen,
 
-},{
-  defaultNavigationOptions: defaultStackOption
-})
+// },{
+//   defaultNavigationOptions: defaultStackOption
+// })
 //Buttom Tab bavigation when user clikcs on Maps screen
 const TabMapNavigator = createStackNavigator({
   Hospital:HospitalScreen,
@@ -88,16 +89,16 @@ const TabsScreenConfig = {
       tabBarColor: Colors.hedTint
     }
   },
-  Camera: {
-    screen: TabCamNavigator,
-    navigationOptions: {
-      tabBarLabel: "Cam",
-      tabBarIcon: tabInfo => {
-        return (<Icon name="ios-camera" type="ionicon" size={20}color={tabInfo.tintColor} />);
-      },
-      tabBarColor: Colors.hedTint
-    }
-  },
+  // Camera: {
+  //   screen: TabCamNavigator,
+  //   navigationOptions: {
+  //     tabBarLabel: "Cam",
+  //     tabBarIcon: tabInfo => {
+  //       return (<Icon name="ios-camera" type="ionicon" size={20}color={tabInfo.tintColor} />);
+  //     },
+  //     tabBarColor: Colors.hedTint
+  //   }
+  // },
   Hospital: {
     screen: TabMapNavigator,
     navigationOptions: {
