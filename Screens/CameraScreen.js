@@ -6,6 +6,8 @@ import { ListItem } from "react-native-elements";
 import Tflite from "tflite-react-native";
 import Color from "../constants/Color";
 
+var RNFS = require('react-native-fs')
+
 export default class  CameraScreen extends Component{
 
   constructor(props){
@@ -67,9 +69,6 @@ export default class  CameraScreen extends Component{
                 this.setState({
                   pickedImage: source,
                 });
-                  // ImageManipulator.manipulateAsync(source.uri, [{rotate: 1}], 
-                    // {compress: 1, format: ImageManipulator.SaveFormat.JPEG}).then(resizeImage => {
-                      // console.log("URI:", response.uri);
                       this.tflite.runModelOnImage({
                         path: source.uri, 
                       }, (err, res) => {
@@ -85,10 +84,20 @@ export default class  CameraScreen extends Component{
                             });
                         }
                       })
-                    // }).catch(err => {
-                    //     console.log(err);
-                    // })
               }
+              RNFS.exists(response.uri).then(res => {
+                if(res){
+                  return RNFS.unlink(response.uri).then(() => {
+                    console.log('deleted')
+                  }).catch(err => {
+                    console.log(err)
+                  })
+                }else{
+                  console.log("FILE NOT FOUND");
+                }
+              }).catch(err => {
+                console.log(err);
+              })
           }); 
     }
     render(){
