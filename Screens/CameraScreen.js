@@ -1,20 +1,61 @@
 import React,{Component} from 'react'
-import{View,StyleSheet,Button,Image} from 'react-native'
+import{View, StyleSheet, Image, Text } from 'react-native'
 import ImagePicker from 'react-native-image-picker'
+import { IconButton, Card, Button, } from "react-native-paper";
+import { ListItem } from "react-native-elements";
+import Tflite from "tflite-react-native";
+import Color from "../constants/Color";
 
 export default class  CameraScreen extends Component{
 
-constructor(props){
-    super(props)
-    this.state = {
-        pickedImage:null,
-    }
-}    
+  constructor(props){
+      super(props)
+      this.state = {
+          pickedImage:null,
+      }
+      this.tflite = new Tflite()
+      this.state = {
+        pickedImage: null,
+        isModelReady: false,
+        whichMachineName: null,
+        whichMachineId: null
+      }
+  } 
 
-     takeImageHandler = () =>{
-          
-          ImagePicker.showImagePicker(options, (response) => {
-            console.log('Response = ', response);
+  componentWillUnmount(){
+    this.tflite.close();
+  }
+  async componentDidMount(){
+    this.tflite.loadModel({
+      model: "model_unquant.tflite",
+      labels: 'labels.txt',
+      numThreads: 1
+    }, (err, res) => {
+      if(err){
+        console.log(err)
+      }
+      else{
+        this.setState({
+          isModelReady: true
+        })
+        console.log(res);
+      }
+    })  
+  }
+
+
+  takeImageHandler = async () =>{
+    // console.log("Hello");
+          ImagePicker.showImagePicker({
+            allowsEditing: false,
+            aspect: [16, 9],
+            storageOptions: {
+              cameraRoll: true,
+              waitUntilSaved: true
+            },
+            quality: 1,
+          }, (response) => {
+            // console.log('Response = ', response);
             if (response.didCancel) {
               console.log('User cancelled image picker');
             } else if (response.error) {
@@ -22,22 +63,41 @@ constructor(props){
             } else if (response.customButton) {
               console.log('User tapped custom button: ', response.customButton);
             } else {
-                const source = { uri: response.uri };
+                const source = { uri: response.uri, path: response.path };
                 this.setState({
-
-                // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-                    pickedImage: source,
-                  });
-            }
+                  pickedImage: source,
+                });
+                  // ImageManipulator.manipulateAsync(source.uri, [{rotate: 1}], 
+                    // {compress: 1, format: ImageManipulator.SaveFormat.JPEG}).then(resizeImage => {
+                      // console.log("URI:", response.uri);
+                      this.tflite.runModelOnImage({
+                        path: source.uri, 
+                      }, (err, res) => {
+                        if(err){
+                          console.log("ERRRRRRRR")
+                          console.log(err)
+                        }
+                        else{        
+                           console.log("model"); 
+                            this.setState({
+                              whichMachineName: res[0].label.substr(2, res[0].label.length - 1),
+                              whichMachineId: res[0].label.substr(0, 1)
+                            });
+                        }
+                      })
+                    // }).catch(err => {
+                    //     console.log(err);
+                    // })
+              }
           }); 
-          
-        
     }
     render(){
+      // let img = require(this.state.pickedImage.uri)
+      console.log(this.state)
     return (
         <View style={this.styles.imagePicker}>
           <View style={this.styles.imagePreview}>
-            {!this.state.whichMachineName ? (
+            {!this.state.pickedImage ? (
   
               <View style={{alignItems: "center"}}>
   
@@ -50,7 +110,7 @@ constructor(props){
               <Button onPress={this.takeImageHandler} color={Color.hedTint}>Tap to take photo</Button>
               </View>
               ) : (
-                <Image style={this.styles.image} source={this.state.pickedImage}></Image>
+                <Image style={this.styles.image} source={{uri: this.state.pickedImage.uri}}></Image>
               )}
           </View>
           {!this.state.whichMachineName ? (
@@ -68,7 +128,7 @@ constructor(props){
                   icon="camera"
                   style={this.styles.btnStyle}
                   mode="outlined"
-                  color={Colors.hedTint}
+                  color={Color.hedTint}
                   onPress={this.takeImageHandler}
                   disabled={!this.state.isModelReady}
                   >
@@ -105,7 +165,6 @@ constructor(props){
             )
           }
         </View>
-  
       );
     }
   
