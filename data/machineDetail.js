@@ -59,7 +59,7 @@ import MachineCategory from '../models/machineCategory';
       ]
    ),
    new MachineCategory(
-     "3",
+     "2",
      "Hay-baler",
      "#f5a442",
      "https://unsplash.com/photos/FJq5WZ6sbNU/download?force=true&w=640",
@@ -116,7 +116,7 @@ import MachineCategory from '../models/machineCategory';
      ]
    ),
    new MachineCategory(
-     "2",
+     "3",
      "Farm slasher",
      "#f5a442",
      "https://media.machines4u.com.au/machinery/35/440335/2018-TEAGLE-DYNAMO-6-SINGLE-ROLLER-SLASHER-7-CUT-_20529122.h.jpg",

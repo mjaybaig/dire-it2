@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image} from "react-native";
+import { View, Text, StyleSheet, Image,ScrollView} from "react-native";
 
 import MenueItem from '../components/menuItem'
 
@@ -12,6 +12,7 @@ export default class MainScreen extends Component{
     render(){
     //calling menue item to get format with image to diplay here
     return(
+       
         <View style ={styles.overlayContainer}>
         <View style = {styles.top}>
         <Image source={require("../Images/MainScreenImage.png")} style={styles.mainImage}/>
@@ -25,21 +26,28 @@ export default class MainScreen extends Component{
                 })
             }}>
             </MenueItem>
-            {/* <MenueItem icon='camera'
+            <MenueItem icon='camera'
             iconName = "Machine Auto-Identify"
 
                 onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: "Camera",
                 })
-            }}/> */}
+            }}/>
            <MenueItem icon='hospital'
                 iconName ="Near By Hospitals"
                 onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: "Hospitals",
                 })
-            }}/> 
+            }}/>
+           <MenueItem icon='newspaper'
+                iconName ="News"
+                onSelect = {() => {
+                this.props.navigation.navigate({
+                    routeName: "News",
+                })
+            }}/>
         </View>
         </View>
     )
@@ -58,7 +66,7 @@ MainScreen.navigationOptions = (navigationData) =>{
         //backgroundColor:'rgba(47,163,218, .4)'
     },
     top:{
-        height:"48%",
+        height:"50%",
         alignItems:"center",
         justifyContent:"center",
     },
@@ -77,9 +85,10 @@ MainScreen.navigationOptions = (navigationData) =>{
        // backgroundColor:'rgba(255,255,255, 0.8)',
     },
     menueContainer:{
-        height:"55%",
-        flexDirection:'column',
-        //flexWrap:'wrap',
+        height:"50%",
+        flexDirection:'row',
+        width:"100%",
+       flexWrap:'wrap',
 
     }
 })

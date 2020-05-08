@@ -15,6 +15,7 @@ import MachinePrecautions from "../Screens/MachinePrecautions"
 import HospitalScreen from "../Screens/HospitalScreen"
 import ShowDirectionScreen from "../Screens/ShowDirectionScreen"
 import CameraScreen from "../Screens/CameraScreen"
+import NewsScreen from "../Screens/NewsScreen"
 
 const defaultStackOption = {
     headerStyle:{
@@ -34,9 +35,9 @@ const DireNavigator = createStackNavigator({
     ShowDirection:ShowDirectionScreen,
     MachineList: MachineListScreen,
     MachineDetail : MachineDetailScreen,
-   // Camera:CameraScreen,
-    
-    MachinePrecautions: MachinePrecautions
+    Camera:CameraScreen,
+    MachinePrecautions: MachinePrecautions,
+    News: NewsScreen
 
 },{
     defaultNavigationOptions: defaultStackOption
@@ -54,12 +55,12 @@ const TabListNavigator = createStackNavigator({
 })
 
 //Bottom Tab navigation when user clicks on camera screen
-// const TabCamNavigator = createStackNavigator({
-//   Camera:CameraScreen,
+const TabCamNavigator = createStackNavigator({
+  Camera:CameraScreen,
 
-// },{
-//   defaultNavigationOptions: defaultStackOption
-// })
+},{
+  defaultNavigationOptions: defaultStackOption
+})
 //Buttom Tab bavigation when user clikcs on Maps screen
 const TabMapNavigator = createStackNavigator({
   Hospital:HospitalScreen,
@@ -74,7 +75,7 @@ const TabsScreenConfig = {
     navigationOptions: {
       // tab info will diynamically get the collor from tabBarOption using it for my
       // convienece
-      tabBarIcon: tabInfo => {return (<Icon name="ios-home" type = "ionicon" size={20}color={tabInfo.tintColor } />);
+      tabBarIcon: tabInfo => {return (<Icon name="ios-home" type = "ionicon" size={20}color={tabInfo.tintColor }/>);
       },
       tabBarColor: Colors.hedTint
     }
@@ -89,16 +90,16 @@ const TabsScreenConfig = {
       tabBarColor: Colors.hedTint
     }
   },
-  // Camera: {
-  //   screen: TabCamNavigator,
-  //   navigationOptions: {
-  //     tabBarLabel: "Cam",
-  //     tabBarIcon: tabInfo => {
-  //       return (<Icon name="ios-camera" type="ionicon" size={20}color={tabInfo.tintColor} />);
-  //     },
-  //     tabBarColor: Colors.hedTint
-  //   }
-  // },
+  Camera: {
+    screen: TabCamNavigator,
+    navigationOptions: {
+      tabBarLabel: "Cam",
+      tabBarIcon: tabInfo => {
+        return (<Icon name="ios-camera" type="ionicon" size={20}color={tabInfo.tintColor} />);
+      },
+      tabBarColor: Colors.hedTint
+    }
+  },
   Hospital: {
     screen: TabMapNavigator,
     navigationOptions: {
@@ -132,7 +133,7 @@ const TabsScreenConfig = {
 }
 const DireTabNavigator = Platform.OS == "android"
  ? createMaterialBottomTabNavigator(TabsScreenConfig, {
-   activeTintColor: 'white',
+   activeTintColor: 'black',
    shifting: true,
    //Set colour defualt for alll tabs
   //  barStyle:{
