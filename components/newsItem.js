@@ -19,7 +19,7 @@ render(){
         <ListItem thumbnail>
               <Left>
                 <Thumbnail square source={{ uri: this.data.urlToImage != null ?
-                     this.data.urlToImage : "https://images.unsplash.com/photo-1506092490682-b2cc6b651308?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"}} />
+                     this.data.urlToImage : "https://pixabay.com/get/54e6d0424956aa14f1dc8460da2932761d36dbed505876_640.jpg"}} />
               </Left>
               <Body>
                 <Text numberOfLines={2}>{this.data.title} </Text>
@@ -30,8 +30,8 @@ render(){
                 </View>
               </Body>
               <Right>
-                <Button transparent onPress={this.handlePress}>
-                  <Text>View</Text>
+                <Button transparent onPress={this.handlePress}  style={{backgroundColor:"#F3BA36"}}>
+                  <Text style={{color:"white"}}>View</Text>
                 </Button>
               </Right>
             </ListItem>

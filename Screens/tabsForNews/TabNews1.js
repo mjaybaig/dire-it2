@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Alert,View, ActivityIndicator, PermissionsAndroid } from 'react-native'
 import { Container, Header, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 
-import {getArticles} from "../../components/articles"
+import {getArticles} from "../../components/articleFarm"
 import NewsItem from "../../components/newsItem"
 import NewsModel from "../../components/newsModel"
 
@@ -56,7 +56,7 @@ export default class TabNews1 extends Component {
         <List 
         //Inbuild fuction of native base to render array iteratively
         dataArray={this.state.data}
-        //callback which takes array and retursn commponent 
+        //callback which takes array and return commponent 
         renderRow={(item) => {
             return <NewsItem data={item} onPress ={this.handleNewsDataOnPress}/>
         }}/>
@@ -64,7 +64,7 @@ export default class TabNews1 extends Component {
        )
 
     return (
-      <Container>
+        <Container>
         <Content>
          {view}
         </Content>
@@ -72,10 +72,28 @@ export default class TabNews1 extends Component {
         showModal={this.state.setModalVisible}
         articleData={this.state.modalArticleData}
         //only run this fuction when we want to  call it hence no ()
-        onClose = {this.handleNewsDataClose}
-        />
+        onClose = {this.handleNewsDataClose}/>
       </Container>
+
     );
   }
 }
 const styles = StyleSheet.create({})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,7 +21,7 @@ import React, { Component } from "react";
 
         componentDidMount(){
             let placeId = this.props.navigation.getParam('placeId');
-            let   userLat = this.props.navigation.getParam('latitude')
+            let userLat = this.props.navigation.getParam('latitude')
            let  userLong = this.props.navigation.getParam('longitude')   
             this.showDirectionsOnMap(placeId,userLat,userLong)
 
