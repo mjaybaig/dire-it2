@@ -15,6 +15,7 @@ import MachinePrecautions from "../Screens/MachinePrecautions"
 import HospitalScreen from "../Screens/HospitalScreen"
 import ShowDirectionScreen from "../Screens/ShowDirectionScreen"
 import CameraScreen from "../Screens/CameraScreen"
+import NewsScreen from "../Screens/NewsScreen"
 
 const defaultStackOption = {
     headerStyle:{
@@ -30,12 +31,13 @@ const defaultStackOption = {
 //Main Navigator Stack navigation 
 const DireNavigator = createStackNavigator({
     FirstScreen : MainScreen,
+    Hospitals:HospitalScreen,
+    ShowDirection:ShowDirectionScreen,
     MachineList: MachineListScreen,
     MachineDetail : MachineDetailScreen,
     Camera:CameraScreen,
-    Hospitals:HospitalScreen,
-    ShowDirection:ShowDirectionScreen,
-    MachinePrecautions: MachinePrecautions
+    MachinePrecautions: MachinePrecautions,
+    News: NewsScreen
 
 },{
     defaultNavigationOptions: defaultStackOption
@@ -73,7 +75,7 @@ const TabsScreenConfig = {
     navigationOptions: {
       // tab info will diynamically get the collor from tabBarOption using it for my
       // convienece
-      tabBarIcon: tabInfo => {return (<Icon name="ios-home" type = "ionicon" size={20}color={tabInfo.tintColor } />);
+      tabBarIcon: tabInfo => {return (<Icon name="ios-home" type = "ionicon" size={20}color={tabInfo.tintColor }/>);
       },
       tabBarColor: Colors.hedTint
     }
@@ -131,7 +133,7 @@ const TabsScreenConfig = {
 }
 const DireTabNavigator = Platform.OS == "android"
  ? createMaterialBottomTabNavigator(TabsScreenConfig, {
-   activeTintColor: 'white',
+   activeTintColor: 'black',
    shifting: true,
    //Set colour defualt for alll tabs
   //  barStyle:{

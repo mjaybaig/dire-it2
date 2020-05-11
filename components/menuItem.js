@@ -23,11 +23,10 @@ export default class MenuItem extends Component {
         )
     }
 }
-
 const styles = StyleSheet.create({
     menuItem: {
-        //width:'33.333333333%',
-        height:"33%",
+        width:'33.333333333%',
+        //height:"33%",
         padding:10,
         backgroundColor:'#F3BA36',
         flexDirection: 'row',
@@ -38,8 +37,8 @@ const styles = StyleSheet.create({
         borderWidth:2,
     },
     image:{
-       // width:'100%',
-        //height:'100%',
+        width:'100%',
+        height:'100%',
         opacity:0.3,
         // alignItems: 'center'
         //borderColor:"#F3BA36",
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     nameIcon:{
         fontSize: 15,
         textAlign:'center',
-        flex: 1,
+       // flex: 1,
         flexWrap: 'wrap'      
     }
 })

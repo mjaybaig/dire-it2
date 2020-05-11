@@ -46,7 +46,7 @@ MachineDetailScreen.navigationOptions = (navigationData) =>{
             params: {categoryId: selectedCategory.id}})
          }}>
              <View style={styles.headerText}>
-            <Text style={{color:"white",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community' color="white"/>
+            <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community' color="black"/>
             </View>
            </TouchableOpacity>),
         headerTitle: selectedCategory.title 
@@ -57,7 +57,8 @@ MachineDetailScreen.navigationOptions = (navigationData) =>{
 
 const styles = StyleSheet.create({
    txtStyles: {
-      fontSize: 16
+      fontSize: 16,
+      padding:5   
    },
    image:{
       width :'100%',

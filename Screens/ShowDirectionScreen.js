@@ -21,7 +21,7 @@ import React, { Component } from "react";
 
         componentDidMount(){
             let placeId = this.props.navigation.getParam('placeId');
-            let   userLat = this.props.navigation.getParam('latitude')
+            let userLat = this.props.navigation.getParam('latitude')
            let  userLong = this.props.navigation.getParam('longitude')   
             this.showDirectionsOnMap(placeId,userLat,userLong)
 
@@ -53,6 +53,7 @@ import React, { Component } from "react";
                 
                 console.log(userLat)
                 console.log(userLong)
+                console.log(placeId)
                 try{
                     const result = await axios.get(
                         `https://maps.googleapis.com/maps/api/directions/json?origin=${userLat},${userLong}&destination=place_id:${placeId}&key=${googleKey.googleApiKey}`
@@ -84,10 +85,7 @@ import React, { Component } from "react";
                 marker = ( <Marker coordinate = {this.state.destinationCoords
                     [this.state.destinationCoords.length - 1]}/>)
             }
-            console.log(this.state.userLongitude)
-
-      
-             
+            console.log(this.state.userLongitude)           
                 const mapRegion = {
                     //points and surface
                     latitude:this.props.navigation.getParam('latitude'),

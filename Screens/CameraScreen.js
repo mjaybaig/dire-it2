@@ -63,8 +63,10 @@ export default class  CameraScreen extends Component{
               return;
             } else if (response.error) {
               console.log('ImagePicker Error: ', response.error);
+              return
             } else if (response.customButton) {
               console.log('User tapped custom button: ', response.customButton);
+              return
             } else {
                 const source = { uri: response.uri, path: response.path };
                 this.setState({
@@ -86,13 +88,15 @@ export default class  CameraScreen extends Component{
                         }
                       })
               }
-              RNFS.exists(response.uri).then(res => {
+              RNFS.exists(response.uri).then(async res => {
                 if(res){
-                  return RNFS.unlink(response.uri).then(() => {
-                    console.log('deleted')
-                  }).catch(err => {
-                    console.log(err)
-                  })
+                  try {
+                    await RNFS.unlink(response.uri);
+                    console.log('deleted');
+                  }
+                  catch (err) {
+                    console.log(err);
+                  }
                 }else{
                   console.log("FILE NOT FOUND");
                 }
