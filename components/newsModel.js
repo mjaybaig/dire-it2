@@ -34,7 +34,7 @@ export default class newsModel extends Component {
                      </Button>
                      </Left>
                     <Body>
-                        <Title children = {articleData.title} style ={{color:"white"}}/>
+                        <Title children = {articleData.title} style ={{color:"black"}}/>
                     </Body>
                 </Header>
                 <Content contentContainerStyle ={{flex:1}}>
