@@ -16,6 +16,7 @@ import HospitalScreen from "../Screens/HospitalScreen"
 import ShowDirectionScreen from "../Screens/ShowDirectionScreen"
 import CameraScreen from "../Screens/CameraScreen"
 import NewsScreen from "../Screens/NewsScreen"
+import WeatherScreen from "../Screens/WeatherScreen"
 const defaultStackOption = {
     headerStyle:{
       backgroundColor: Colors.hedTint,
@@ -37,6 +38,7 @@ const DireNavigator = createStackNavigator({
     Camera:CameraScreen,
     MachinePrecautions: MachinePrecautions,
     News: NewsScreen,
+    Weather: WeatherScreen
 
 },{
     defaultNavigationOptions: defaultStackOption

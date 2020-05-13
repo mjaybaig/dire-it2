@@ -128,13 +128,13 @@ export default class MainScreen extends PureComponent{
                     routeName: "Hospitals",
                 })
             }}/>
-           {/* <MenueItem icon='newspaper'
-                iconName ="News"
+           <MenueItem icon='cloud'
+                iconName ="Weather"
                 onSelect = {() => {
                 this.props.navigation.navigate({
-                    routeName: "News",
+                    routeName: "Weather",
                 })
-            }}/> */}
+            }}/>
         </View>
         </View>
     )
