@@ -58,6 +58,7 @@ export default class TabNews1 extends Component {
         dataArray={this.state.data}
         //callback which takes array and return commponent 
         renderRow={(item) => {
+            console.log(item)
             return <NewsItem data={item} onPress ={this.handleNewsDataOnPress}/>
         }}/>
 
