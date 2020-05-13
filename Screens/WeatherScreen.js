@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Tab, Tabs } from 'native-base';
 import{StyleSheet} from 'react-native'
-import Tab1 from './tabsForNews/TabNews1';
-import Tab2 from './tabsForNews/TabNews2';
-import Tab3 from './tabsForNews/TabNews3'
+import Tab1 from './TabsForWeather/TempratureTab'
+import Tab2 from './TabsForWeather/UvTab';
+import Tab3 from './TabsForWeather/RainTab'
 
 export default class NewScreen extends Component {
     render() {
@@ -11,15 +11,15 @@ export default class NewScreen extends Component {
           <Container tabStyle={styles.contaierStyle} >
             <Tabs tabBarUnderlineStyle={{backgroundColor:"white"}} >
               <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-              textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Farming">
+              textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Temprature">
                 <Tab1 />
               </Tab>
               <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-              textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="General">
+              textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="UV-Radiation">
                 <Tab2 />
               </Tab>
               <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
-              textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Health">
+              textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Rainfall">
                 <Tab3 />
               </Tab>
             </Tabs>

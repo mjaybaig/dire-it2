@@ -16,7 +16,7 @@ import HospitalScreen from "../Screens/HospitalScreen"
 import ShowDirectionScreen from "../Screens/ShowDirectionScreen"
 import CameraScreen from "../Screens/CameraScreen"
 import NewsScreen from "../Screens/NewsScreen"
-
+import WeatherScreen from "../Screens/WeatherScreen"
 const defaultStackOption = {
     headerStyle:{
       backgroundColor: Colors.hedTint,
@@ -24,7 +24,7 @@ const defaultStackOption = {
   
       // Platform.OS === "android" ?Colors.primaryColor: ""
     },
-    headerTintColor:"white"
+    headerTintColor:"black"
     //Platform.OS == "android" ? "white" : Colors.primaryColor
   }
   
@@ -37,7 +37,8 @@ const DireNavigator = createStackNavigator({
     MachineDetail : MachineDetailScreen,
     Camera:CameraScreen,
     MachinePrecautions: MachinePrecautions,
-    News: NewsScreen
+    News: NewsScreen,
+    Weather: WeatherScreen
 
 },{
     defaultNavigationOptions: defaultStackOption

@@ -13,8 +13,7 @@ export default class MachineDetailScreen extends Component {
       <View>
         <Image
           source={{ uri: selectedCategory.imageUrl }}
-          style={styles.image}
-        />
+          style={styles.image}/>
         <Text style={styles.title}>Description</Text>
         <Text style={styles.txtStyles}>{selectedCategory.desc}</Text>
         <Text></Text>
@@ -46,7 +45,7 @@ MachineDetailScreen.navigationOptions = (navigationData) =>{
             params: {categoryId: selectedCategory.id}})
          }}>
              <View style={styles.headerText}>
-            <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community' color="black"/>
+            <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community'color="black"/>
             </View>
            </TouchableOpacity>),
         headerTitle: selectedCategory.title 

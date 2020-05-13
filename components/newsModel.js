@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions,Modal,StyleSheet } from 'react-native'
 import{Container,Header,Content,Body,Left,Right,Title,Button, Icon}from 'native-base'
-import { WebView } from 'react-native-webview'
+import { WebView } from 'react-native-webview';
 
 //get the height of the window with the help of Dimesion and redicong -56 pixel
 const weViewHeight = Dimensions.get('window').height -56;
@@ -17,6 +17,8 @@ export default class newsModel extends Component {
     render() {
         const {showModal, articleData} = this.props
         const { url } = articleData
+        console.log("********************************************************************************8")
+        console.log(url)
         if(url != undefined){
         return (
             <Modal
@@ -35,10 +37,11 @@ export default class newsModel extends Component {
                         <Title children = {articleData.title} style ={{color:"white"}}/>
                     </Body>
                 </Header>
-                <Content contentContainerStyle ={{height: weViewHeight}}>
+                <Content contentContainerStyle ={{flex:1}}>
                     <WebView source={{uri:url}} style={{flex:1}}
-                    onError ={this.handleClose} startInLoadingState
-                    scalesPageToFit/>
+                    startInLoadingState scalesPageToFit scrollEnabled
+                    onError ={this.handleClose} 
+                    />
                 </Content>
             </Container>
             </Modal>
