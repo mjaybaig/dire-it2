@@ -37,6 +37,7 @@ async requestFineLocation() {
 
 
     return(
+      console.disableYellowBox = true,
       <DireNavigator/>
     )
   }

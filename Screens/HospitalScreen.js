@@ -4,6 +4,9 @@ import axios from "axios"
 import googleKey from "../env"
 import ShowDirectionScreen from "./ShowDirectionScreen"
 import Geolocation from 'react-native-geolocation-service'
+
+import Communications from 'react-native-communications';
+
 //import { Rating } from "react-native-elements";
 
 export default class  HospitalScreen extends Component{
@@ -106,13 +109,15 @@ export default class  HospitalScreen extends Component{
         // const combine = [...this.state.mapDetailResult, ...this.state.distanceResult]
             const displayMapDetail = this.state.mapDetailResult.map((m,i) => {
             return(
-            <TouchableOpacity key ={i}>
+            <View key ={i}>
             <View style = {styles.gridItem}>
             <View  style = {styles.sugestStyle} >
             <Text style={styles.textStyle}>Name:</Text>
             <Text style = {styles.MainTextStyle}>{m.name}</Text>
             <Text style={styles.textStyle}>Phone Number</Text>
-            <Text style = {styles.MainTextStyle}>{m.formatted_phone_number}</Text>
+            <TouchableOpacity onPress={()=> Communications.phonecall(m.formatted_phone_number, true)}>
+            <Text style = {styles.PhoneTextStyle}>{m.formatted_phone_number}</Text>
+            </TouchableOpacity>
             <Text style={styles.textStyle}>Rating:</Text>
             <Text style = {styles.MainTextStyle}>{m.rating}</Text>
             <Button title = "Direction" color="#F3BA36"
@@ -128,7 +133,7 @@ export default class  HospitalScreen extends Component{
             }} />
             </View>
             </View>
-            </TouchableOpacity>
+            </View>
             )
         })
       
@@ -223,6 +228,12 @@ const styles = StyleSheet.create({
     MainTextStyle:{
         color:"#000",
         paddingBottom:10
+    },
+    PhoneTextStyle:{
+        color:"blue",
+        paddingBottom:10,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowRadius: 2
     },
     containerSpinner: {
         flex: 1,
