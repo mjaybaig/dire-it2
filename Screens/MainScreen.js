@@ -9,7 +9,6 @@ import MenueItem from '../components/menuItem'
 import {getArticles} from "../components/articleFarm"
 import {ListItem} from 'react-native-elements'
 
-import MainScreenModel  from "../components/MainScreenModel"
 
 const DEVICE_WIDTH = Dimensions.get("window").width
 export default class MainScreen extends PureComponent{
@@ -21,10 +20,10 @@ export default class MainScreen extends PureComponent{
             data: [],
             sortData:[],
             activeIndex:0,
+            modalVisible:false
         }
     }
    
-    
     componentDidMount(){
         getArticles().then(result => {
             this.setState({data: result})
@@ -33,28 +32,25 @@ export default class MainScreen extends PureComponent{
             Alert.alert("Error","Was not able to load News Check Internet Connectivity")
         }
          )
-
-        //  setInterval(()=> {
-        //     this.scrollRef.current.scrollTo({
-        //         animated:true,
-        //         y:0,
-        //         x:DEVICE_WIDTH * 2
-        //     })
-        // }, 3000)
-
-        // this.setState({predictions: result.data.predictions})
-        //     const firstResult = this.state.predictions.map(prediction =>(prediction.place_id))
     }
 
-    _renderItem({item}){
-       // console.log("ITEM", item)
+
+     _renderItem = ({item}) => {
+        // console.log("ITEM", item)
         //console.log(item.url)
         //const { modalVisible } = this.state;
+        if(item.url != undefined){
         return (
             <TouchableOpacity onPress={() => {  
-                return <MachineGrid 
-                title = {itemData.item.title}/>
-            }}>
+                this.props.navigation.navigate({
+                    routeName: "FarmingNews",
+                    params: {
+                        url: item.url,
+                        title: item.title
+                    }
+                })
+                
+                }}>
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
             item.urlToImage:"https://pixabay.com/get/54e6d0424956aa14f1dc8460da2932761c3ddfe5515178_640.jpg"}}
@@ -70,7 +66,9 @@ export default class MainScreen extends PureComponent{
                 
           </View>
           </TouchableOpacity>
-        )
+        ) }else {
+                    return null
+                }   
     }
     render(){
         let titleData = this.state.sortData
@@ -103,7 +101,6 @@ export default class MainScreen extends PureComponent{
                   autoplay={true}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />   
       </View>
-       
         <View style={styles.menueContainer}>
             <MenueItem icon = 'tractor'
             iconName = "Machine List"
@@ -208,12 +205,5 @@ MainScreen.navigationOptions = (navigationData) =>{
          margin:5,
          backgroundColor:"white"
      },
-     contanerStyle:{
-        margin:15,
-        marginBottom:0,
-        backgroundColor:"white"
-    },
-    headerStyle:{
-        backgroundColor:"#F3BA36"
-    }
+    
 })

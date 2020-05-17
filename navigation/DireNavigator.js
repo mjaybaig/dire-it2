@@ -17,6 +17,7 @@ import ShowDirectionScreen from "../Screens/ShowDirectionScreen"
 import CameraScreen from "../Screens/CameraScreen"
 import NewsScreen from "../Screens/NewsScreen"
 import WeatherScreen from "../Screens/WeatherScreen"
+import MainscreenModel from "../components/MainScreenModel"
 const defaultStackOption = {
     headerStyle:{
       backgroundColor: Colors.hedTint,
@@ -31,6 +32,7 @@ const defaultStackOption = {
 //Main Navigator Stack navigation 
 const DireNavigator = createStackNavigator({
     FirstScreen : MainScreen,
+    FarmingNews:MainscreenModel,
     Hospitals:HospitalScreen,
     ShowDirection:ShowDirectionScreen,
     MachineList: MachineListScreen,
@@ -38,7 +40,7 @@ const DireNavigator = createStackNavigator({
     Camera:CameraScreen,
     MachinePrecautions: MachinePrecautions,
     News: NewsScreen,
-    Weather: WeatherScreen
+    Weather: WeatherScreen,
 
 },{
     defaultNavigationOptions: defaultStackOption
@@ -48,7 +50,8 @@ const DireNavigator = createStackNavigator({
 const TabListNavigator = createStackNavigator({
   MachineList: MachineListScreen,
   MachineDetail : MachineDetailScreen,
-  MachinePrecautions: MachinePrecautions
+  MachinePrecautions: MachinePrecautions,
+  FarmingNews:MainscreenModel,
 
 
 },{
