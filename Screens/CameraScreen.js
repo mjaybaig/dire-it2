@@ -60,7 +60,7 @@ export default class  CameraScreen extends Component{
             // console.log('Response = ', response);
             if (response.didCancel) {
               console.log('User cancelled image picker');
-              return
+              return;
             } else if (response.error) {
               console.log('ImagePicker Error: ', response.error);
               return
