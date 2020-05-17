@@ -51,8 +51,8 @@ export default class TabNews1 extends Component {
       console.log(this.state.data)
       let view =  this.state.isLoading ? (
           <View>
-              <ActivityIndicator animating={this.state.isLoading}/>
-              <Text style={{flex:1,marginTop:10, justifyContent:"center",}}>Loading Please wait</Text>
+              <ActivityIndicator animating={this.state.isLoading} style={{justifyContent:"center"}}/>
+              {/* //<Text style={{flex:1,marginTop:10, justifyContent:"center",}}>Loading Please wait</Text> */}
           </View>
        ): (
         <List 
