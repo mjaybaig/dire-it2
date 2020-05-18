@@ -14,7 +14,7 @@ const Weather = ({ weather, temperature,temperatureMin,temperatureMax,forcasts,w
 let date = new Date(sunSet*1000)
 //let localDate = new Date(date)
 console.log(sunSet)
-  console.log(date)
+console.log(date)
 //var hours = date.getHours()
   if (weather != null) {
     return (
@@ -26,16 +26,16 @@ console.log(sunSet)
         >
         <View style={{height:"50%"}}>
         <View style={styles.headerContainer}>
-        <Icon name= {weatherConditions[weather].icon} type='material-community' color={"#fff"} size={80}/>
-          <Text style={styles.tempText}>{temperature} </Text>
+          <Icon name= {weatherConditions[weather].icon} type='material-community' color={"#fff"} size={80}/>
+          <Text style={styles.tempText}>{temperature}°C</Text>
         </View>
         <View style={styles.headerContainer}>
-        <Text style={styles.tempText}>Max Temp </Text>
-          <Text style={styles.tempText}>{temperatureMax} </Text>
+          <Text style={styles.tempText}>Max Temp </Text>
+          <Text style={styles.tempText}>{temperatureMax}°C</Text>
         </View>
         <View style={styles.headerContainer}>
-        <Text style={styles.tempText}>Min Temp </Text>
-          <Text style={styles.tempText}>{temperatureMin} </Text>
+          <Text style={styles.tempText}>Min Temp </Text>
+          <Text style={styles.tempText}>{temperatureMin}°C</Text>
         </View>
         </View>
         <View style={{height:"50%",marginTop:"2%"}}>
@@ -55,9 +55,9 @@ console.log(sunSet)
               <Text style={styles.subtitle}>- ‘Seek’ shade and ‘slide’ on some sunglasses</Text>
               </View>
               ): temperature < min_temCutoff ?(
-                <Text style={styles.subtitle}>Temprature is to low </Text>
+                <Text style={styles.subtitle}>Temprature is too low </Text>
                 ):(
-                  <Text style={styles.subtitle}>Temprature is good</Text>
+                  <Text style={styles.subtitle}>Temperature is great!</Text>
                   )
                 }
         </View>
@@ -67,7 +67,7 @@ console.log(sunSet)
   } else {
     return (
       <View>
-        <Text>Cehck Internet Connection</Text>
+        <Text>Check Internet Connection</Text>
       </View>
     )
   };

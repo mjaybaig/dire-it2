@@ -3,7 +3,7 @@ import { Grid, Col, Container,List, ListItem, Text, Content, H1, H3, Card, CardI
 import{StyleSheet, View, TouchableOpacity} from 'react-native'
 import Tab1 from './TabsForWeather/TempratureTab'
 import Tab2 from './TabsForWeather/UvTab';
-import Tab3 from './TabsForWeather/RainTab'
+import Tab3 from './TabsForWeather/AirQuality'
 import { ScrollView } from 'react-native-gesture-handler';
 import {Icon} from 'react-native-elements'
 
@@ -73,7 +73,7 @@ export default class WeatherScreen extends Component {
             <Tab2 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Rain">
+          textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Air Quality">
             <Tab3 />
           </Tab>
         </Tabs>
