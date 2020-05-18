@@ -174,6 +174,8 @@ MainScreen.navigationOptions = (navigationData) =>{
         flexDirection:'row',
         width:"100%",
         flexWrap:'wrap',
+       // marginBottom:10
+
     },
     ScrollTextContainer: {
         height:"13%",
