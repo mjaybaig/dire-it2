@@ -54,10 +54,10 @@ export default class MainScreen extends PureComponent{
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
             item.urlToImage:"https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}}
-             style={{width:"20%",height:60,marginLeft:10,marginTop:10}} />
+             style={{width:"20%",height:"100%",marginLeft:10,marginTop:10}} />
            <Text style={{
                 fontSize: 18,
-                padding:4,
+                 padding:4,
                 marginRight:20,
                 shadowColor: "black",
                 shadowOpacity: 0.7,
@@ -147,7 +147,6 @@ MainScreen.navigationOptions = (navigationData) =>{
  }
  const styles = StyleSheet.create({
     overlayContainer:{
-        flex:1,
         //backgroundColor:'rgba(47,163,218, .4)'
     },
     top:{
@@ -169,43 +168,29 @@ MainScreen.navigationOptions = (navigationData) =>{
        // paddingRight:40,
        // backgroundColor:'rgba(255,255,255, 0.8)',
     },
-    menueContainer:{
-        height:"35%",
-        flexDirection:'row',
-        width:"100%",
-        flexWrap:'wrap',
-       // marginBottom:10
-
-    },
+   
     ScrollTextContainer: {
-        height:"13%",
-        flex: 1, 
+    height:"13%",
+       //flex: 1, 
         flexDirection:'row', 
-        justifyContent:"space-evenly",
+        //justifyContent:"space-evenly",
            // marginBottom:7
         //     flex: 1,
     //     justifyContent: 'center',
     //     alignItems: 'center',
      },
+     menueContainer:{
+        height:"40%",
+        flexDirection:'row',
+        width:"100%",
+       flexWrap:'wrap',
+       justifyContent:"space-evenly"
+       // marginBottom:10
+    },
      txtStyles: {
         fontSize: 16,
         padding:5   
-     },
-     cirlceDiv:{
-         position:"absolute",
-         bottom:15,
-         height:5,
-         display:"flex",
-         flexDirection:"row",
-         justifyContent:"center",
-         alignItems:"center"
-     },
-     whiteCilre:{
-         width:6,
-         height:6,
-         borderRadius:3,
-         margin:5,
-         backgroundColor:"white"
-     },
+     }
+     
     
 })
