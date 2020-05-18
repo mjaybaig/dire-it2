@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, Col, Container,List, ListItem, Text, Content, H1, H3, Card, CardItem, Body, Icon,Tabs,Tab} from 'native-base';
-import{StyleSheet, View} from 'react-native'
+import { Grid, Col, Container,List, ListItem, Text, Content, H1, H3, Card, CardItem, Body,Tabs,Tab} from 'native-base';
+import{StyleSheet, View, TouchableOpacity} from 'react-native'
 import Tab1 from './TabsForWeather/TempratureTab'
 import Tab2 from './TabsForWeather/UvTab';
 import Tab3 from './TabsForWeather/RainTab'
 import { ScrollView } from 'react-native-gesture-handler';
+import {Icon} from 'react-native-elements'
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
@@ -17,8 +18,10 @@ const slides = [
     key: 1,
     title: 'Introduction to Weather',
     text: 'The sun emits harmful radiation known as UV rays. Swipe right to learn more',
-    backgroundColor: '#5eba7d',
-    icon: 'sun'
+    backgroundColor: '#FAE5B6',
+    icon: 'cloud',
+    iconColor:"#ADD8E6"
+
   },
   {
     key: 2,
@@ -26,12 +29,13 @@ const slides = [
     text: "It's harmful radiation emitted by the sun. If the UV reading on the next page is above 3, wear sunscreen. On higher readings, avoid going out.",
     icon: 'radiation-alt',
     // image: require('./assets/2.jpg'),
-    backgroundColor: '#ba5c1a',
+    backgroundColor: '#FAE5B6',
+    iconColor:"red"
   }
 ];
 
 
-export default class NewScreen extends Component {
+export default class WeatherScreen extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -45,7 +49,7 @@ export default class NewScreen extends Component {
       <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: item.backgroundColor, flex: 1 }}>
         <H1 style={styles.slideHeader}>{item.title}</H1>
         {/* <Icon type="FontAwesome5" name='sun'  style={{color:'red', fontSize:60}}/> */}
-        <FontAwesome5 solid name={item.icon} style={{color:'yellow', fontSize:120}}/>
+        <FontAwesome5 solid name={item.icon} style={{color:item.iconColor, fontSize:120}}/>
         <View style={{ padding:5, flex: 1, justifyContent: "center"}}>
           <Text style={styles.slideText}>{item.text}</Text>
         </View>
@@ -77,11 +81,56 @@ export default class NewScreen extends Component {
     )
   }
 }
+
+WeatherScreen.navigationOptions = (navigationData) =>{
+   return {
+      headerRight: () => (
+        <TouchableOpacity  onPress={() => {
+           navigationData.navigation.navigate({routeName: 'firstAidScreen'})
+        }}>
+          <View style={styles.headerText}>
+           <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community'color="black"/>
+           </View>
+          </TouchableOpacity>)  
+     }
+}
 const styles = StyleSheet.create({
-  contaierStyle:{
-      backgroundColor:"#FAE5B6",
+  containerStyle:{
+    backgroundColor:"#FAE5B6",
+  },
+  septextStyle: {
+    fontSize: 15
+  },
+  cardheader: {
+    flexDirection: "column"
+  },
+  subheading: {
+    color: '#3d3d3d'
+  },
+  slideHeader: {
+    color: 'black',
+    opacity: 0.8,
+    marginTop: 30,
+    marginBottom:"10%"
+  },
+  slideText: {
+    color: 'black',
+    opacity: 0.8,
+    marginTop: 30,
+    textAlign: 'center',
+    fontSize:20 ,
+    marginBottom:"30%"
+   },
+   headerText:{
+    fontSize:18,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   }
-  })
+});
+
   
 
 //   componentDidMount(){
@@ -143,28 +192,3 @@ const styles = StyleSheet.create({
 //   }
 // }
 
-// const styles = StyleSheet.create({
-//   containerStyle:{
-//     backgroundColor:"#FAE5B6",
-//   },
-//   septextStyle: {
-//     fontSize: 15
-//   },
-//   cardheader: {
-//     flexDirection: "column"
-//   },
-//   subheading: {
-//     color: '#3d3d3d'
-//   },
-//   slideHeader: {
-//     color: 'white',
-//     opacity: 0.8,
-//     marginTop: 30
-//   },
-//   slideText: {
-//     color: 'white',
-//     opacity: 0.8,
-//     marginTop: 30,
-//     textAlign: 'center'
-//   }
-// });

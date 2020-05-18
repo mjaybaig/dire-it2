@@ -19,7 +19,7 @@ render(){
         <ListItem thumbnail>
               <Left>
                 <Thumbnail square source={{ uri: this.data.urlToImage != null ?
-                     this.data.urlToImage : "https://pixabay.com/get/54e6d0424956aa14f1dc8460da2932761c3ddfe5515178_640.jpg"}} />
+                     this.data.urlToImage : "https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}} />
               </Left>
               <Body>
                 <Text numberOfLines={2}>{this.data.title} </Text>

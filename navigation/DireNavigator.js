@@ -18,6 +18,8 @@ import CameraScreen from "../Screens/CameraScreen"
 import NewsScreen from "../Screens/NewsScreen"
 import WeatherScreen from "../Screens/WeatherScreen"
 import MainscreenModel from "../components/MainScreenModel"
+import firstAidScreen from "../Screens/heatFirstAid"
+
 const defaultStackOption = {
     headerStyle:{
       backgroundColor: Colors.hedTint,
@@ -41,7 +43,7 @@ const DireNavigator = createStackNavigator({
     MachinePrecautions: MachinePrecautions,
     News: NewsScreen,
     Weather: WeatherScreen,
-
+    firstAidScreen:firstAidScreen
 },{
     defaultNavigationOptions: defaultStackOption
 })
@@ -52,7 +54,6 @@ const TabListNavigator = createStackNavigator({
   MachineDetail : MachineDetailScreen,
   MachinePrecautions: MachinePrecautions,
   FarmingNews:MainscreenModel,
-
 
 },{
   defaultNavigationOptions: defaultStackOption
@@ -67,12 +68,18 @@ const TabCamNavigator = createStackNavigator({
 })
 //Buttom Tab bavigation when user clikcs on Maps screen
 const TabMapNavigator = createStackNavigator({
-  Hospital:HospitalScreen,
+  Weather:HospitalScreen,
   ShowDirection:ShowDirectionScreen
 },{
   defaultNavigationOptions: defaultStackOption
 })
 
+const TabTemNavigator = createStackNavigator({
+  Weather: WeatherScreen,
+    firstAidScreen:firstAidScreen
+},{
+  defaultNavigationOptions: defaultStackOption
+})
 const TabsScreenConfig = {
   Home: {
     screen: DireNavigator,
@@ -115,15 +122,15 @@ const TabsScreenConfig = {
   },
   // will be implemnting in iteration 2
 
-  // Temp: {
-  //   screen: MachineListScreen,
-  //   navigationOptions: {
-  //     tabBarIcon: tabInfo => {
-  //       return (<MaterialCommunityIcons name="weather-cloudy" size={25}color={tabInfo.tintColor} />);
-  //     },
-  //     tabBarColor: Colors.accentColor
-  //   }
-  // },
+  Temp: {
+    screen: TabTemNavigator,
+    navigationOptions: {
+      tabBarIcon: tabInfo => {
+        return (<Icon name="weather-cloudy" type="material-community" size={25}color={tabInfo.tintColor} />);
+      },
+      tabBarColor: Colors.hedTint
+    }
+  },
   // SmoothMaps: {
   //   screen: SmoothMapsScreen,
   //   navigationOptions: {

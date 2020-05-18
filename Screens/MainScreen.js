@@ -53,11 +53,12 @@ export default class MainScreen extends PureComponent{
                 }}>
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
-            item.urlToImage:"https://pixabay.com/get/54e6d0424956aa14f1dc8460da2932761c3ddfe5515178_640.jpg"}}
-             style={{width:"20%",height:60,marginLeft:5,marginTop:5}} />
+            item.urlToImage:"https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}}
+             style={{width:"20%",height:60,marginLeft:10,marginTop:10}} />
            <Text style={{
                 fontSize: 18,
-                marginLeft:5,
+                padding:4,
+                marginRight:20,
                 shadowColor: "black",
                 shadowOpacity: 0.7,
                 width:"80%",
@@ -77,7 +78,7 @@ export default class MainScreen extends PureComponent{
     return(
         <View style ={styles.overlayContainer}>
         <View style = {styles.top}>
-        <Image source={require("../Images/MainScreenImage.png")} style={styles.mainImage}/>
+        <Image source={require("../Images/MainScreenImage2.jpeg")} style={styles.mainImage}/>
         </View>
         <View style={{flexDirection: "row",justifyContent: "space-between",alignItems: 'baseline',backgroundColor:"#F3BA36"}}>
         <Text style={{fontWeight:"bold",fontSize:17,padding:2}}>News</Text>
@@ -175,12 +176,11 @@ MainScreen.navigationOptions = (navigationData) =>{
         flexWrap:'wrap',
     },
     ScrollTextContainer: {
-        height:"10%",
+        height:"13%",
         flex: 1, 
         flexDirection:'row', 
-        justifyContent: 'center'
-        
-       // marginBottom:7
+        justifyContent:"space-evenly",
+           // marginBottom:7
         //     flex: 1,
     //     justifyContent: 'center',
     //     alignItems: 'center',
