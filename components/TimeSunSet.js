@@ -12,11 +12,12 @@ export default class Time extends Component {
    }
     render() {
         //from now converts time to string this hour ago 
-        const time = moment(this.data || moment.now()).fromNow()
-        //const timeend = moment(this.data || moment.now()).toNow()
-        console.log(time)
+        //const time = moment(this.data || moment.now()).fromNow()
+        console.log(this.data)
+        const time = moment(this.data || moment.now()).toNow()
+        
         return (
-            <Text note>{time}</Text>
+            <Text style={{fontSize:20, color:"white"}} note>Sun will set in {time}</Text>
 
         )
     }

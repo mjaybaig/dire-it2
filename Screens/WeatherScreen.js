@@ -61,11 +61,11 @@ export default class NewScreen extends Component {
       <Container tabStyle={styles.contaierStyle}>
         <Tabs tabBarUnderlineStyle={{backgroundColor:"white"}} >
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Temprature">
+          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Temperature">
             <Tab1 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Weather">
+          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="UV">
             <Tab2 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
