@@ -28,10 +28,25 @@ const slides = [
     title: 'What is U.V. Radiation',
     text: "It's harmful radiation emitted by the sun. If the UV reading on the next page is above 3, wear sunscreen. On higher readings, avoid going out.",
     icon: 'radiation-alt',
-    // image: require('./assets/2.jpg'),
     backgroundColor: '#FAE5B6',
-    iconColor:"red"
-  }
+    iconColor:"#ADD8E6"
+  },  
+  {
+    key: 3,
+    title: 'Air Pollution',
+    text: "Quality of air is an important factor when working outside. We gather data on air quality in your area and show you the results.",
+    icon: 'smog',
+    backgroundColor: '#FAE5B6',
+    iconColor: '#ADD8E6'
+  },
+  {
+    key: 4,
+    title: 'Staying safe in harmful weather',
+    text: "We've compiled a list of helpful tips to keep you safe in dangerous weather. Click the 'More' button from any of the following tabs to get there",
+    icon: 'user-shield',
+    backgroundColor: '#FAE5B6',
+    iconColor: '#ADD8E6'
+  },
 ];
 
 
