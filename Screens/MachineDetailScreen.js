@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, StyleSheet ,TouchableOpacity,Image, ScrollView} from "react-native";
+import { View, StyleSheet ,TouchableOpacity,Image, ScrollView, Text} from "react-native";
 import {Icon,ListItem} from 'react-native-elements'
 
 
@@ -18,9 +18,8 @@ export default class MachineDetailScreen extends Component {
         <Text style={styles.txtStyles}>{selectedCategory.desc}</Text>
         <Text></Text>
         <Text style={styles.title}>Risks</Text>
-        
-          {
-            selectedCategory.comInjury.map(cat =>  <ListItem bottomDivider style={styles.txtStyles} key={cat} title={cat}/>)}
+        {
+            selectedCategory.comInjury.map(cat => <ListItem bottomDivider style={styles.txtStyles} key={cat} title={cat}/>)}
           {/* <Button onPress={
              () => {
                this.props.navigation.navigate({routeName: 'MachinePrecautions', 

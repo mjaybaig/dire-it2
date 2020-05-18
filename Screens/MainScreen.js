@@ -125,7 +125,7 @@ export default class MainScreen extends PureComponent{
                     routeName: "Hospitals",
                 })
             }}/>
-           <MenueItem icon='cloud'
+           <MenueItem icon='weather-sunny'
                 iconName ="Weather"
                 onSelect = {() => {
                 this.props.navigation.navigate({
