@@ -2,7 +2,7 @@ export const weatherConditions = {
     Rain: {
       color: '#005BEA',
       title: 'Raining',
-      subtitle: "Temeprature is fine to work, but its raining out side please make sure to drive safely on the wet fields, especially if you are using bikes",
+      subtitle: "Temeprature looks fine to work, but its raining out side please make sure to drive safely on the wet fields, especially if you are using bikes",
       icon: 'weather-rainy'
     },
     Clear: {
@@ -20,7 +20,7 @@ export const weatherConditions = {
     Clouds: {
       color: '#1F1C2C',
       title: 'Clouds',
-      subtitle: 'Temeprature is fine to work outside, The clouds seem to cover the sun',
+      subtitle: 'Temeprature looks fine to work outside, The clouds seem to cover the sun, Work safe and always stay hyderated',
       icon: 'weather-cloudy'
     },
   

@@ -122,3 +122,9 @@ export default class AccordionCustomHeaderContent extends Component {
   }
 }
 <br/>
+AccordionCustomHeaderContent.navigationOptions = (navigationData) =>{
+  const catId = navigationData.navigation.getParam("categoryId");
+  return {
+      headerTitle: 'Safety Guidelines'
+  }
+}

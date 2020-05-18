@@ -54,14 +54,13 @@ export default class MainScreen extends PureComponent{
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
             item.urlToImage:"https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}}
-             style={{width:"20%",height:"100%",marginLeft:10,marginTop:10}} />
+             style={{width:"17%",height:"100%",marginLeft:10,marginTop:10,marginRight:10}} />
            <Text style={{
-                fontSize: 18,
-                 padding:4,
-                marginRight:20,
+                fontSize: 17,
                 shadowColor: "black",
                 shadowOpacity: 0.7,
                 width:"80%",
+                marginBottom:10,
                 shadowOffset: { width: 10, height: 10 },
                 }} >{item.title} </Text>
                 
@@ -150,7 +149,7 @@ MainScreen.navigationOptions = (navigationData) =>{
         //backgroundColor:'rgba(47,163,218, .4)'
     },
     top:{
-        height:"47%",
+        height:"45%",
         alignItems:"center",
         justifyContent:"center",
     },

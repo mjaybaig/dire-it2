@@ -41,7 +41,7 @@ const slides = [
   },
   {
     key: 4,
-    title: 'Staying safe in harmful weather',
+    title: 'Staying safe',
     text: "We've compiled a list of helpful tips to keep you safe in dangerous weather. Click the 'More' button from any of the following tabs to get there",
     icon: 'user-shield',
     backgroundColor: '#FAE5B6',
@@ -61,11 +61,11 @@ export default class WeatherScreen extends Component {
   
   _renderItem = ({item}) => {
     return (
-      <View style={{ flexDirection: 'column', alignItems: 'center', backgroundColor: item.backgroundColor, flex: 1 }}>
+      <View style={{ alignItems: 'center', backgroundColor: item.backgroundColor,flex:1}}>
         <H1 style={styles.slideHeader}>{item.title}</H1>
         {/* <Icon type="FontAwesome5" name='sun'  style={{color:'red', fontSize:60}}/> */}
-        <FontAwesome5 solid name={item.icon} style={{color:item.iconColor, fontSize:120}}/>
-        <View style={{ padding:5, flex: 1, justifyContent: "center"}}>
+        <FontAwesome5 solid name={item.icon} style={{color:item.iconColor, fontSize:80}}/>
+        <View style={{flex:1}}>
           <Text style={styles.slideText}>{item.text}</Text>
         </View>
       </View>

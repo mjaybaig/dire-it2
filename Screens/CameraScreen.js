@@ -195,7 +195,7 @@ export default class  CameraScreen extends Component{
         },
         imagePreview: {
           width: '100%',
-          height: 350,
+          height: "50%",
           marginBottom: 10,
           justifyContent: 'center',
           alignItems: 'center',

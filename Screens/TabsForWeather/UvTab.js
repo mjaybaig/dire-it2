@@ -41,11 +41,10 @@ export default class UvTab extends Component {
         return (
             !currindex ? 
             <View style={styles.uvContainer}>
-                <Spinner color={colors.accentColor} style={{justifyContent: 'center', alignItems: 'center',marginBottom:20}}></Spinner>
+                <Spinner color={colors.accentColor} style={{justifyContent: 'center', alignItems: 'center', }}></Spinner>
             </View> : 
-            
             <View style={styles.uvContainer}>
-                <View style={{}}>
+                <View style={{height: '60%'}}>
                     <View style={styles.textContainer}>
                         <Text style={styles.uvText}>Current</Text>
                         <Text style={styles.uvText}>{currindex}</Text>
@@ -67,7 +66,7 @@ export default class UvTab extends Component {
                             }
                         </View>
                     </View>
-                    <View style={{height: '50%'}}>
+                    <View style={{height: '40%'}}>
                         {
                             maxToday > UV_CUTOFF ? 
                             <ScrollView>
@@ -123,7 +122,7 @@ export default class UvTab extends Component {
 
 const styles = StyleSheet.create({
     uvContainer: {
-        flex: 1,
+       flex: 1,
         backgroundColor: 'black'
     },
     uvText: {
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     textContainer:{
-       // flex: 1,
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
     } ,

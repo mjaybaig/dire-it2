@@ -49,13 +49,13 @@ console.log(date)
             temperature > tem_CuttOff ? (
               <View style={{padding:5}} >
               <Text style={styles.subtitle}>- Limit Outdoor actitivity to the the coolest part of the day</Text>
-              <Text style={styles.subtitle}>- Protect yourself from the sun when outside by covering exposed skin, using sunscreen and wearing a hat.</Text>
+              <Text style={styles.subtitle}>- Protect yourself from the sun when outside by covering exposed skin, using sunscreen and wear a hat.</Text>
               <Text style={styles.subtitle}>- ‘Seek’ shade and ‘slide’ on some sunglasses</Text>
               </View>
               ): temperature < min_temCutoff ?(
-                <Text style={styles.subtitle}>Temprature is too low </Text>
+                <Text style={styles.subtitle}>Temprature is  low, Take along an emergency kit and blankets in your car in case of a breakdown or accident </Text>
                 ):(
-                  <Text style={styles.subtitle}>Please View the More section for more detailed tips of how keep your self safe</Text>
+                  <Text style={styles.subtitle}>Please click on the "More" button for a detailed tips of how keep your self safe</Text>
                   )
                 }
         </View>

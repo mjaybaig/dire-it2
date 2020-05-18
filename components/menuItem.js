@@ -26,6 +26,7 @@ export default class MenuItem extends Component {
 const styles = StyleSheet.create({
     menuItem: {
         width:'50%',
+        height:"40%",
         backgroundColor:'#F3BA36',
         flexDirection: 'row',
         alignItems: 'center',
