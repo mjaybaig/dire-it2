@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import {  StyleSheet, Modal,Button} from 'react-native'
 import axios from "axios";
 import apis from "../../env";
 import Geolocation from 'react-native-geolocation-service'
-import { H1, ListItem } from 'native-base';
+import { H1, ListItem,Fab } from 'native-base';
+import { View, Icon,Text} from "native-base";
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 
 const advices = {
@@ -51,7 +53,9 @@ export default class AirQuality extends Component {
             to: null,
             value: null,
             advice: null,
-            suggestions: null
+            suggestions: null,
+            modalVisible: false,
+
         }
     }
     componentDidMount(){
@@ -62,7 +66,7 @@ export default class AirQuality extends Component {
                     'X-API-Key': apis.EPA_API_KEY
                 }
             };
-            axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites?environmentalSegment=air&location=[${loc.coords.latitude},${loc.coords.longitude}]`, config).then(airquality => {
+            axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites?environmentalSegment=air&location=[-37.99,145.217]`, config).then(airquality => {
             // axios.get('https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites', config).then(airquality => {
                 let siteID = airquality.data.records[0].siteID;
                 axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites/${siteID}`, config).then(qualityData => {
@@ -96,13 +100,19 @@ export default class AirQuality extends Component {
 
        return `${addHours.getUTCHours()}:${(addHours.getUTCMinutes()<10?'0':'') + addHours.getMinutes()}`
     }
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+      }
     render() {
         let {healthStatus, from, to, advice, suggestion} = this.state
         console.log(this.state)
         let convFrom = this.convertDate(from)
         let convTo = this.convertDate(to)
-        // conso
+        console.log("in air")
         return (
+            <View style={{flex:1}}>
+
             <View style={{flexDirection: 'column', flex: 1, backgroundColor: this.state.healthColor, alignContent: 'center'}}>
                 <H1 style={styles.headerStyle}> The Air Quality is</H1>
                 {
@@ -120,9 +130,51 @@ export default class AirQuality extends Component {
                                     </ListItem>
                             })
                         }
+
                     </View>
                 }
-            </View>
+          </View>
+          <View style={{}}>
+          <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                      alert('Modal has been closed.');
+                    }}>
+                      <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
+                      <View style={{alignItems:"center",height:"60%",marginTop:20}}>
+                      <Text style={{fontSize:30, marginBottom:40}}>Air Pollution</Text>
+                      <View style={{marginTop:20,marginBottom:30 }}>
+                      <FontAwesome5 solid name="smog" style={{color:"#ADD8E6", fontSize:80}}/>
+                      </View>
+                      <View style={{marginTop:30,padding:10,justifyContent: 'center'}}>
+                      <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>Quality of air is an important factor when working outside. We gather data on air quality in your area and show you the results</Text>
+                      </View>
+                      </View>
+                      <View style={{padding:60}}>
+                        <Button
+                          onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                          }} title="Back" color="#F3BA36">
+                        </Button>
+                          </View>
+                      </View>
+                  </Modal>
+                  <Fab
+                  active={this.state.active}
+                  direction="up"
+                  containerStyle={{}}
+                  style={{ backgroundColor: '#808080' }}
+                  position="bottomRight"
+                    onPress={() => {
+                      this.setModalVisible(true);
+                    }}>
+                      <Icon name="help" />
+                  </Fab>
+
+        </View>
+        </View>
         )
     }
 }

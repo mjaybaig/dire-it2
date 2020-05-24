@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
-import { H1, H3, Spinner, ListItem} from "native-base";
+import { Text, StyleSheet, View ,Modal,Button} from 'react-native'
+import { H1, H3, Spinner, ListItem,Fab,Icon} from "native-base";
 import axios from "axios";
 import colors from '../../constants/Color'
 import UVItem from "../../components/uvItem";
 import { ScrollView } from 'react-native-gesture-handler';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 const UV_CUTOFF = 2
 
@@ -15,7 +16,9 @@ export default class UvTab extends Component {
             currindex: null,
             forcast: null,
             maxUVTime: null,
-            maxToday: null
+            maxToday: null,
+            modalVisible: false,
+
         }
     }
     componentDidMount(){
@@ -35,12 +38,18 @@ export default class UvTab extends Component {
             console.log("Done");
         })
     }
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+      }
     render() {
         let { currindex, forcast, maxToday, maxUVTime } = this.state;
         console.log(forcast)
         return (
-            !currindex ? 
-            <View style={styles.uvContainer}>
+            <View style={{flex:1}}>
+            {
+
+                !currindex ?
+                <View style={styles.uvContainer}>
                 <Spinner color={colors.accentColor} style={{justifyContent: 'center', alignItems: 'center', }}></Spinner>
             </View> : 
             <View style={styles.uvContainer}>
@@ -89,40 +98,58 @@ export default class UvTab extends Component {
                             </ScrollView>
                         }
 
-                    </View>
-                        {/* {
-                            forcast[0].max_level > UV_CUTOFF ? (
-                                <Text>UV Index is high today</Text>
-                                ) :  (
-                                    <Text>UV Index is low today</Text>
-                                )
-                        } */}
+                 </View>
             </View>
-        //     <View style={{flex: 1, flexDirection: "row"}}>
-        //         <View style={{flexDirection: "column", flex: 1, alignItems: "center"}}>
-        //             <H1> {currindex}</H1>
-        //             <Text style={{fontSize: 12}}>Current</Text>
-        //         </View>
-        //         {
-            //             forcast && (
-                //                 forcast.slice(1).map((item, index) => {
-                //                     return(
-                //                         <View> 
-                //                             <Text>Day {index+1} Max</Text>
-                //                             <Text>{item.max_level}</Text>
-                //                         </View>
-                //                     )
-                //                 })
-        //             )
-        //         }
-        //    </View>
+
+}
+    <View style={{height:"16.5%", backgroundColor:"black"}}>
+<Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                      alert('Modal has been closed.');
+                    }}>
+                      <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
+                      <View style={{alignItems:"center",height:"60%",marginTop:20}}>
+                      <Text style={{fontSize:30, marginBottom:40}}>What is U.V. Radiation</Text>
+                      <View style={{marginTop:20,marginBottom:30 }}>
+                      <FontAwesome5 solid name="radiation-alt" style={{color:"#ADD8E6", fontSize:80}}/>
+                      </View>
+                      <View style={{marginTop:30,padding:10,justifyContent: 'center'}}>
+                      <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>It's harmful radiation emitted by the sun. If the UV reading is above 3, wear sunscreen. On higher readings, avoid going out</Text>
+                      </View>
+                      </View>
+                      <View style={{padding:60}}>
+                        <Button
+                          onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                          }} title="Back" color="#F3BA36">
+                        </Button>
+                          </View>
+                      </View>
+                  </Modal>
+                  <Fab
+                  active={this.state.active}
+                  direction="up"
+                  containerStyle={{}}
+                  style={{ backgroundColor: '#808080' }}
+                  position="bottomRight"
+                    onPress={() => {
+                      this.setModalVisible(true);
+                    }}>
+                      <Icon name="help" />
+                  </Fab>
+</View>
+</View>
         )
     }
 }
 
 const styles = StyleSheet.create({
     uvContainer: {
-       flex: 1,
+        //flex: 1,
+        height:"87%",
         backgroundColor: 'black'
     },
     uvText: {

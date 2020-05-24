@@ -2,13 +2,13 @@ export const weatherConditions = {
     Rain: {
       color: '#005BEA',
       title: 'Raining',
-      subtitle: "Temeprature looks fine to work, but its raining out side please make sure to drive safely on the wet fields, especially if you are using bikes",
+      subtitle: "Temeprature looks fine to work, but its raining out side please make sure to drive safely on the wet fields, especially if you are using bikes.",
       icon: 'weather-rainy'
     },
     Clear: {
       color: '#f7b733',
       title: 'Clear Sky',
-      subtitle: 'Sky are Clear and the temperature is looking good, Have a fun day working in the fields',
+      subtitle: 'Pleseant weather, Have a fun day working in the fields and remember to always stay hydrated',
       icon: 'weather-sunny'
     },
     Thunderstorm: {
@@ -20,7 +20,7 @@ export const weatherConditions = {
     Clouds: {
       color: '#1F1C2C',
       title: 'Clouds',
-      subtitle: 'Temeprature looks fine to work outside, The clouds seem to cover the sun, Work safe and always stay hyderated',
+      subtitle: 'Temeprature looks fine to work outside, The clouds seem to cover the sun, Work safe and always stay hydrated',
       icon: 'weather-cloudy'
     },
   

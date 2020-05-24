@@ -18,7 +18,9 @@ import CameraScreen from "../Screens/CameraScreen"
 import NewsScreen from "../Screens/NewsScreen"
 import WeatherScreen from "../Screens/WeatherScreen"
 import MainscreenModel from "../components/MainScreenModel"
-import firstAidScreen from "../Screens/heatFirstAid"
+import HelpScreen from "../Screens/TabsForWeather/HelpScreen"
+
+import TemTabScreen from "../Screens/TabsForWeather/TempratureTab"
 
 const defaultStackOption = {
     headerStyle:{
@@ -43,7 +45,9 @@ const DireNavigator = createStackNavigator({
     MachinePrecautions: MachinePrecautions,
     News: NewsScreen,
     Weather: WeatherScreen,
-    firstAidScreen:firstAidScreen
+    TemTabScreen:TemTabScreen,
+    HelpScreen:HelpScreen,
+
 },{
     defaultNavigationOptions: defaultStackOption
 })
@@ -76,7 +80,9 @@ const TabMapNavigator = createStackNavigator({
 
 const TabTemNavigator = createStackNavigator({
   Weather: WeatherScreen,
-    firstAidScreen:firstAidScreen
+  HelpScreen:HelpScreen,
+  TemTabScreen:TemTabScreen,
+
 },{
   defaultNavigationOptions: defaultStackOption
 })

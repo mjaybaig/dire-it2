@@ -20,6 +20,7 @@ export default class  HospitalScreen extends Component{
            distanceResult:[],
            Fetching:false,
            refreshing:false,
+           //phonenumber:"Not applicable"
           // combines:[]
        }
       // this.showDirectionsOnMap = this.showDirectionsOnMap.bind(this)
@@ -105,21 +106,22 @@ export default class  HospitalScreen extends Component{
  // <Text style = {styles.MainTextStyle}>{this.state.distanceResult.map(d => (d.distance.text))}</Text>
             // <Text style = {styles.MainTextStyle}>{this.state.distanceResult.map(d => (d.duration.text))}</Text>
     render(){
-       // console.log(this.state.distanceResult)
+       // console.log(this.state.distanceResult
         // const combine = [...this.state.mapDetailResult, ...this.state.distanceResult]
             const displayMapDetail = this.state.mapDetailResult.map((m,i) => {
-            return(
+                return(
             <View key ={i}>
             <View style = {styles.gridItem}>
             <View  style = {styles.sugestStyle} >
             <Text style={styles.textStyle}>Name:</Text>
             <Text style = {styles.MainTextStyle}>{m.name}</Text>
             <Text style={styles.textStyle}>Phone Number</Text>
-            <TouchableOpacity onPress={()=> Communications.phonecall(m.formatted_phone_number, true)}>
-            <Text style = {styles.PhoneTextStyle}>{m.formatted_phone_number}</Text>
+            <TouchableOpacity onPress={()=> Communications.phonecall(m.formatted_phone_number, true)} >
+            <Text style = {styles.PhoneTextStyle} > 
+            {m.formatted_phone_number != null  ? m.formatted_phone_number:"Not provided"} </Text>
             </TouchableOpacity>
             <Text style={styles.textStyle}>Rating:</Text>
-            <Text style = {styles.MainTextStyle}>{m.rating}</Text>
+            <Text style = {styles.MainTextStyle}>{m.rating != null  ? m.rating:"Not provided"}</Text>
             <Button title = "Direction" color="#F3BA36"
             onPress={() => {
                 this.props.navigation.navigate({
@@ -147,8 +149,10 @@ export default class  HospitalScreen extends Component{
         //     )
         // })
         
-        //console.log(this.state.userLatitude)
-        //console.log(this.state.userLongitude)
+        console.log(this.state.userLatitude)
+        console.log(this.state.userLongitude)
+
+
     const mapRegion = {
         //points and surface
         

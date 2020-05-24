@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet ,ScrollView} from 'react-native';
+import {Text, StyleSheet ,ScrollView} from 'react-native';
+import { Container, Header, View, Button,Fab, Tab } from 'native-base';
 import PropTypes from 'prop-types';
 import { weatherConditions } from '../constants/WeatherConditions';
 import {Icon} from 'react-native-elements'
 import TimeAgo from "./TimeSunSet"
 
-const tem_CuttOff =30
+const tem_CuttOff =40
 const min_temCutoff = 5
 
 
@@ -42,7 +43,7 @@ console.log(date)
         <View style={styles.bodyContainer}>
           <Text style={styles.title}>{weatherConditions[weather].title}({weatherDesc})</Text>
           <Text style={styles.subtitle}>
-          {weatherConditions[weather].subtitle}
+          {weatherConditions["Rain"].subtitle}
         </Text>         
 
           {
@@ -55,7 +56,7 @@ console.log(date)
               ): temperature < min_temCutoff ?(
                 <Text style={styles.subtitle}>Temprature is  low, Take along an emergency kit and blankets in your car in case of a breakdown or accident </Text>
                 ):(
-                  <Text style={styles.subtitle}>Please click on the "More" button for a detailed tips of how keep your self safe</Text>
+                  <Text style={styles.subtitle}> </Text>
                   )
                 }
         </View>
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
    // justifyContent: 'flex-end',
    // paddingLeft: 25,
    // marginBottom: 20
-   marginTop:30
+   marginTop:35
   },
   title: {
     padding:5,

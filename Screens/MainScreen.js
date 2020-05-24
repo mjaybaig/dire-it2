@@ -10,6 +10,7 @@ import {getArticles} from "../components/articleFarm"
 import {ListItem} from 'react-native-elements'
 
 
+
 const DEVICE_WIDTH = Dimensions.get("window").width
 export default class MainScreen extends PureComponent{
   // scrollRef = React.createRef()
@@ -54,13 +55,13 @@ export default class MainScreen extends PureComponent{
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
             item.urlToImage:"https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}}
-             style={{width:"17%",height:"100%",marginLeft:10,marginTop:10,marginRight:10}} />
+             style={{width:"20%",height:60,marginLeft:10,marginTop:10}} />
            <Text style={{
                 fontSize: 17,
+                padding:5,
                 shadowColor: "black",
                 shadowOpacity: 0.7,
-                width:"80%",
-                marginBottom:10,
+                width:"70%",
                 shadowOffset: { width: 10, height: 10 },
                 }} >{item.title} </Text>
                 
@@ -84,8 +85,8 @@ export default class MainScreen extends PureComponent{
         <TouchableOpacity onPress={() => {
             this.props.navigation.navigate({routeName: 'News'})
          }}>
-        <View style={{flexDirection:"row"}}>
-        <Text style={{color:"black",fontWeight:"bold",fontSize:17,padding:2,}}>More</Text><Icon name="arrow-right" type='material-community' color="black" />
+        <View style={{flexDirection:"row",}}>
+        <Text style={{color:"black",fontWeight:"bold",fontSize:17,padding:2}}>More</Text><Icon name="arrow-right" type='material-community' color="black" />
         </View>
         </TouchableOpacity>
         </View>
@@ -119,7 +120,7 @@ export default class MainScreen extends PureComponent{
                 })
             }}/>
            <MenueItem icon='hospital'
-                iconName ="Near By Hospitals"
+                iconName ="Nearby Hospitals"
                 onSelect = {() => {
                 this.props.navigation.navigate({
                     routeName: "Hospitals",

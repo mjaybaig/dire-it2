@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { H1, Text } from "native-base";
+import { StyleSheet , Button,View, Modal, Text, TouchableHighlight} from 'react-native'
+import { Icon, Fab,Container, Tab} from "native-base";
 import axios from "axios";
 import Geolocation from 'react-native-geolocation-service'
-import {Icon} from 'react-native-elements'
 import Weather  from "../../components/Weather"
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 
-const Temp_CUTOFF = 3
+const Temp_CUTOFF = 40
 
 export default class TempratureTab extends Component {
     constructor(props){
         super(props);
+        this.screens = ['tempHelpScreen']
         this.state = {
             isLoading: true,
             temperature: 0,
@@ -21,7 +22,11 @@ export default class TempratureTab extends Component {
             forcasts: null,
             weatherDesc:null,
             error: null,
-            sunSet:0
+            sunSet:0,
+            active: false,
+            modalVisible: false,
+
+
         }
     }
     componentDidMount(){
@@ -64,7 +69,9 @@ export default class TempratureTab extends Component {
         // let tomor = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1)
         // console.log(tomor.getDay())
     }
-    
+    setModalVisible(visible) {
+      this.setState({modalVisible: visible});
+    }
     
     render() {
         const { isLoading, weatherCondition, temperature,temperatureMin,temperatureMax, forcasts,weatherDesc,sunSet} = this.state;
@@ -79,11 +86,52 @@ export default class TempratureTab extends Component {
             ) : (
               <Weather weather={weatherCondition} temperature={temperature} 
                temperatureMin={temperatureMin} temperatureMax={temperatureMax} forcasts={forcasts} weatherDesc={weatherDesc} sunSet={sunSet} />
-            )}
-          </View>
+            )} 
+            <View style={{}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+            <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
+            <View style={{alignItems:"center",height:"70%",marginTop:20}}>
+            <Text style={{fontSize:30, marginBottom:40}}>Introduction to Weather</Text>
+            <View style={{marginTop:20,marginBottom:30 }}>
+            <FontAwesome5 solid name="cloud" style={{color:"#ADD8E6", fontSize:80}}/>
+            </View>
+            <View style={{marginTop:30,padding:10,justifyContent: 'center'}}>
+            <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>We are currently displaying current temeprature along with minimum and maximum temepraturen. Please be mindfull of the heat and click on firstaid section for treating your self from any heat related injuries </Text>
+            </View>
+            </View>
+            <View style={{padding:60}}>
+              <Button
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }} title="Back" color="#F3BA36">
+              </Button>
+                </View>
+            </View>
+        </Modal>
+      <Fab
+        active={this.state.active}
+        direction="up"
+        containerStyle={{}}
+        style={{ backgroundColor: '#808080' }}
+        position="bottomRight"
+          onPress={() => {
+            this.setModalVisible(true);
+          }}>
+            <Icon name="help" />
+        </Fab>
+      </View> 
+      </View>
         );
       }
 }
+
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,

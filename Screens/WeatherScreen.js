@@ -4,6 +4,7 @@ import{StyleSheet, View, TouchableOpacity} from 'react-native'
 import Tab1 from './TabsForWeather/TempratureTab'
 import Tab2 from './TabsForWeather/UvTab';
 import Tab3 from './TabsForWeather/AirQuality'
+import Tab4 from './heatFirstAid'
 import { ScrollView } from 'react-native-gesture-handler';
 import {Icon} from 'react-native-elements'
 
@@ -42,7 +43,7 @@ const slides = [
   {
     key: 4,
     title: 'Staying safe',
-    text: "We've compiled a list of helpful tips to keep you safe in dangerous weather. Click the 'More' button from any of the following tabs to get there",
+    text: "We've compiled a list of helpful tips to keep you safe in dangerous weather. The infromation is presented in the first aid section",
     icon: 'user-shield',
     backgroundColor: '#FAE5B6',
     iconColor: '#ADD8E6'
@@ -91,6 +92,10 @@ export default class WeatherScreen extends Component {
           textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Air Quality">
             <Tab3 />
           </Tab>
+          <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
+          textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="FirstAid">
+            <Tab4 />
+          </Tab>
         </Tabs>
       </Container>
     )
@@ -101,10 +106,10 @@ WeatherScreen.navigationOptions = (navigationData) =>{
    return {
       headerRight: () => (
         <TouchableOpacity  onPress={() => {
-           navigationData.navigation.navigate({routeName: 'firstAidScreen'})
+           navigationData.navigation.navigate({routeName: 'HelpScreen'})
         }}>
           <View style={styles.headerText}>
-           <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>More</Text><Icon name="arrow-right" type='material-community'color="black"/>
+           <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>Help</Text><Icon name="arrow-right" type='material-community'color="black"/>
            </View>
           </TouchableOpacity>)  
      }
