@@ -19,7 +19,7 @@ import NewsScreen from "../Screens/NewsScreen"
 import WeatherScreen from "../Screens/WeatherScreen"
 import MainscreenModel from "../components/MainScreenModel"
 import HelpScreen from "../Screens/TabsForWeather/HelpScreen"
-
+import FirstAidWebScreen from "../components/FirstAidWebisteModel"
 import TemTabScreen from "../Screens/TabsForWeather/TempratureTab"
 
 const defaultStackOption = {
@@ -47,6 +47,7 @@ const DireNavigator = createStackNavigator({
     Weather: WeatherScreen,
     TemTabScreen:TemTabScreen,
     HelpScreen:HelpScreen,
+    FirstAidWebScreen:FirstAidWebScreen
 
 },{
     defaultNavigationOptions: defaultStackOption
@@ -82,6 +83,7 @@ const TabTemNavigator = createStackNavigator({
   Weather: WeatherScreen,
   HelpScreen:HelpScreen,
   TemTabScreen:TemTabScreen,
+  FirstAidWebScreen:FirstAidWebScreen
 
 },{
   defaultNavigationOptions: defaultStackOption

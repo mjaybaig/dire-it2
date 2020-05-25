@@ -9,7 +9,7 @@ const dataArray = [
    content3: "- Try using unperfumed talcum powder to increase comfort",
    content4: "- Avoid using ointments or creams, as they keep the skin warm and moist, and may make the condition worse",
    content5:"- Keep the skin clean with frequent baths or showers to prevent sweat glands from becoming clogged",
-   content6:"Website Link"
+   content6:"- Click here to vist the Website for further details"
  },
  { title: "Heat cramps – treatment",
    content1: "- Stop activity and sit quietly in a cool place",
@@ -17,7 +17,7 @@ const dataArray = [
    content3: "- Rest a few hours before returning to activity",
    content4: "- Seek medical help if there is no improvement",
    content5:"- Practice gentle, range-of-motion stretching and gentle massage of the affected muscle group",
-   content6:"Website Link"
+   content6:"- Click here to vist the Website for further details"
 
  },
   { title: "Dizziness/fainting – treatment", 
@@ -26,7 +26,7 @@ const dataArray = [
    content3:"- Drinking plenty of fluids can help when dizziness is caused by excessive heat or dehydration",
    content4: "- Avoid moving or switching positions suddenly",
    content5:"- Avoid long periods of standing still, dehydration, and spending a lot of time in hot environments",
-   content6:"Website Link",
+   content6:"- Click here to vist the Website for further details"
 },
   { title: "Heat exhaustion – treatment", 
   content1: "- Get the person to a cool area and lay them down",
@@ -34,7 +34,7 @@ const dataArray = [
    content3: "- Wet skin with cool water or wet clothes",
    content4: "- Increase fluid intake if they are fully conscious",
    content5:"- Seek medical advice",
-   content6:"Website Link"
+   content6:"- Click here to vist the Website for further details"
   },
   { title: "Heatstroke – treatment", 
   content1: "- Get the person to a cool, shady area and lay them down while you’re waiting for emergency medical help",
@@ -42,7 +42,7 @@ const dataArray = [
   content3: "- Do not give the person fluids to drink",
   content4: "- Position an unconscious person on their side and clear their airway",
   content5: "- If medical attention is delayed, seek further instructions from ambulance or hospital emergency staff",
-  content6:"Website Link"
+  content6:"- Click here to vist the Website for further details"
 },
 ];
 
@@ -107,7 +107,8 @@ export default class AccordionCustomHeaderContent extends Component {
            }}>
     {item.content5}
     </Text>
-     <Text onPress={()=>{Linking.openURL('https://www.betterhealth.vic.gov.au/health/healthyliving/heat-stress-and-heat-related-illness')}} 
+     <Text onPress={()=>
+     {Linking.openURL('https://www.betterhealth.vic.gov.au/health/healthyliving/heat-stress-and-heat-related-illness')}} 
      style={{
       backgroundColor: "#e3f1f1",
       color:"blue",

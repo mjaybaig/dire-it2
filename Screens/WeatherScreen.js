@@ -79,21 +79,21 @@ export default class WeatherScreen extends Component {
       data = {slides} onDone={() => {this.setState({showRealApp: true})}}/>
       :
       <Container tabStyle={styles.contaierStyle}>
-        <Tabs tabBarUnderlineStyle={{backgroundColor:"white"}} >
+        <Tabs tabBarUnderlineStyle={{backgroundColor:"white"}}  >
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="Temperature">
+            textStyle={{color:"black",fontSize:13}} activeTextStyle={{color:"white",fontSize:13}} heading="Temperature">
             <Tab1 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}} heading="UV">
+          textStyle={{color:"black",fontSize:13}} activeTextStyle={{color:"white",fontSize:13}} heading="UV">
             <Tab2 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="Air Quality">
+          textStyle={{color:"black",fontSize:13}} activeTextStyle={{color:"white",fontSize:13}}  heading="Air Quality">
             <Tab3 />
           </Tab>
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}}
-          textStyle={{color:"black"}} activeTextStyle={{color:"white"}}  heading="FirstAid">
+          textStyle={{color:"black",fontSize:13}} activeTextStyle={{color:"white",fontSize:13}}  heading="FirstAid">
             <Tab4 />
           </Tab>
         </Tabs>
@@ -116,6 +116,7 @@ WeatherScreen.navigationOptions = (navigationData) =>{
 }
 const styles = StyleSheet.create({
   containerStyle:{
+    
     backgroundColor:"#FAE5B6",
   },
   septextStyle: {

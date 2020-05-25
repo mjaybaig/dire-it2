@@ -21,7 +21,8 @@ export default class MainScreen extends PureComponent{
             data: [],
             sortData:[],
             activeIndex:0,
-            modalVisible:false
+            modalVisible:false,
+            activeAnimationType:'decay'
         }
     }
    
@@ -55,17 +56,19 @@ export default class MainScreen extends PureComponent{
             <View style={{flexDirection:"row"}}>
            <Image source = {{uri: item.urlToImage != null ? 
             item.urlToImage:"https://unsplash.com/photos/WYd_PkCa1BY/download?force=true&w=640"}}
-             style={{width:"20%",height:60,marginLeft:10,marginTop:10}} />
-           <Text style={{
-                fontSize: 17,
-                padding:5,
-                shadowColor: "black",
-                shadowOpacity: 0.7,
-                width:"70%",
-                shadowOffset: { width: 10, height: 10 },
-                }} >{item.title} </Text>
+           style={{width:"20%",height:60,marginLeft:10,marginTop:10}} />
+           <View style={{width:"90%",marginLeft:10}}>
+           <Text numberOfLines={3} style={{
+               fontSize: 17,
+               //padding:5,
+               shadowColor: "black",
+               shadowOpacity: 0.7,
+               width:"70%",
+               shadowOffset: { width: 10, height: 10 },
+            }} >{item.title} </Text>
                 
           </View>
+            </View>
           </TouchableOpacity>
         ) }else {
                     return null
@@ -97,7 +100,7 @@ export default class MainScreen extends PureComponent{
                   data={this.state.sortData}
                  sliderWidth={300}
                 itemWidth={DEVICE_WIDTH}
-                loop={true}
+                 loop={true}
                   renderItem={this._renderItem}
                   autoplay={true}
                   onSnapToItem = { index => this.setState({activeIndex:index}) } />   

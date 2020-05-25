@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {  StyleSheet, Modal,Button} from 'react-native'
+import {  StyleSheet, Modal,Button,ScrollView} from 'react-native'
 import axios from "axios";
 import apis from "../../env";
 import Geolocation from 'react-native-geolocation-service'
-import { H1, ListItem,Fab } from 'native-base';
+import { H1, ListItem,Fab,List } from 'native-base';
 import { View, Icon,Text} from "native-base";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
@@ -11,7 +11,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const advices = {
     'good': {
         observation: "It's a good day to be outside.",
-        suggestion: ["Keep Checking the app for changes"]
+        suggestion: ["Keep Checking the app for any changes"]
     },
     'moderate': {
         observation: "The air quality is okay, but it could change soon. It’s okay to be outside but watch for changes in air quality around you.",
@@ -43,6 +43,8 @@ const advices = {
         ]
     }
 }
+
+
 export default class AirQuality extends Component {
     constructor(props){
         super(props);
@@ -66,7 +68,8 @@ export default class AirQuality extends Component {
                     'X-API-Key': apis.EPA_API_KEY
                 }
             };
-            axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites?environmentalSegment=air&location=[-37.99,145.217]`, config).then(airquality => {
+            console.log(loc.coords)
+            axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites?environmentalSegment=air&location=[-37.75,145.20]`, config).then(airquality => {
             // axios.get('https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites', config).then(airquality => {
                 let siteID = airquality.data.records[0].siteID;
                 axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites/${siteID}`, config).then(qualityData => {
@@ -111,9 +114,10 @@ export default class AirQuality extends Component {
         let convTo = this.convertDate(to)
         console.log("in air")
         return (
+            
             <View style={{flex:1}}>
-
             <View style={{flexDirection: 'column', flex: 1, backgroundColor: this.state.healthColor, alignContent: 'center'}}>
+            <ScrollView >
                 <H1 style={styles.headerStyle}> The Air Quality is</H1>
                 {
                     healthStatus &&
@@ -125,38 +129,68 @@ export default class AirQuality extends Component {
                         {
                             suggestion && 
                             suggestion.map((item, index)=>{
-                                return <ListItem>
+                                return( 
+                                    <View style={{justifyContent:"center",alignItems:"center"}}>
+                                <ListItem>
                                         <Text style={styles.headerStyle}>{item}</Text>
                                     </ListItem>
+                                </View>
+                                )
                             })
                         }
 
                     </View>
                 }
+                <Text></Text>
+                <Text></Text>
+                <Text></Text>
+                </ScrollView>
+
           </View>
           <View style={{}}>
           <Modal
                     animationType="slide"
-                    transparent={false}
+                    transparent
                     visible={this.state.modalVisible}
                     onRequestClose={() => {
-                      alert('Modal has been closed.');
+                        alert('Modal has been closed.');
                     }}>
                       <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
-                      <View style={{alignItems:"center",height:"60%",marginTop:20}}>
-                      <Text style={{fontSize:30, marginBottom:40}}>Air Pollution</Text>
-                      <View style={{marginTop:20,marginBottom:30 }}>
+                      <View style={{alignItems:"center",flex:1,marginTop:20}}>
+                      <Text style={{fontSize:30, marginBottom:20}}>Air Pollution</Text>
+                      <View style={{marginTop:20,marginBottom:20}}>
                       <FontAwesome5 solid name="smog" style={{color:"#ADD8E6", fontSize:80}}/>
                       </View>
-                      <View style={{marginTop:30,padding:10,justifyContent: 'center'}}>
-                      <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>Quality of air is an important factor when working outside. We gather data on air quality in your area and show you the results</Text>
+                      <ScrollView>
+                      <View>
+                    <List>
+                    <ListItem>
+                      <Text style={{}}>Quality of air is an important factor when working outside. We gather data on air quality in your area and show you the results.</Text>
+                        </ListItem>
+                        <ListItem>
+                        <Text>Good is reflected with Green background</Text>
+                        </ListItem>
+                        <ListItem>
+                        <Text>Moderate is reflected with a yellow background</Text>
+                        </ListItem>
+                        <ListItem>
+                        <Text>Poor is reflected by orange background</Text>
+                        </ListItem>
+                        <ListItem>
+                        <Text>Very poor is reflected with a red background</Text>
+                        </ListItem>
+                        <ListItem>
+                        <Text>Hazardous is reflected with an burgundy background</Text>
+                        </ListItem>
+                        </List>
                       </View>
+                      </ScrollView>
                       </View>
-                      <View style={{padding:60}}>
+                      <View style={{}}>
                         <Button
                           onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                          }} title="Back" color="#F3BA36">
+                              this.setModalVisible(!this.state.modalVisible);
+                            }} title="Back" color="#F3BA36">
                         </Button>
                           </View>
                       </View>
@@ -165,9 +199,9 @@ export default class AirQuality extends Component {
                   active={this.state.active}
                   direction="up"
                   containerStyle={{}}
-                  style={{ backgroundColor: '#808080' }}
+                  style={{ backgroundColor: '#808080',opacity:0.4 }}
                   position="bottomRight"
-                    onPress={() => {
+                  onPress={() => {
                       this.setModalVisible(true);
                     }}>
                       <Icon name="help" />
@@ -184,20 +218,20 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 20,
         fontSize: 17,
-        textAlign: 'center'
+        textAlign: 'center',
     },
     titleStyle: {
         color: 'white',
         fontSize: 25,
         textAlign: 'center',
-        marginTop: 20
+        marginTop: 15
     },
     statusStyle: {
         fontWeight: "900",
         color: 'white',
         fontSize: 50,
-        marginTop: 30,
+        marginTop: 25,
         textAlign: 'center',
-        padding: 30,
+        padding: 20,
     }
 })

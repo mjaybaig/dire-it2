@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet , Button,View, Modal, Text, TouchableHighlight} from 'react-native'
-import { Icon, Fab,Container, Tab} from "native-base";
+import { Icon, Fab,Container, Tab,List,ListItem} from "native-base";
 import axios from "axios";
 import Geolocation from 'react-native-geolocation-service'
 import Weather  from "../../components/Weather"
@@ -95,17 +95,25 @@ export default class TempratureTab extends Component {
           onRequestClose={() => {
             alert('Modal has been closed.');
           }}>
-            <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
-            <View style={{alignItems:"center",height:"70%",marginTop:20}}>
-            <Text style={{fontSize:30, marginBottom:40}}>Introduction to Weather</Text>
-            <View style={{marginTop:20,marginBottom:30 }}>
+            
+            <View style={{backgroundColor:"#FAE5B6",flex:1}}>
+            <View style={{alignItems:"center",flex:1,marginTop:20}}>
+            <Text style={{fontSize:30, marginBottom:20}}>Introduction to Weather</Text>
+            <View style={{marginTop:20,marginBottom:20 }}>
             <FontAwesome5 solid name="cloud" style={{color:"#ADD8E6", fontSize:80}}/>
             </View>
-            <View style={{marginTop:30,padding:10,justifyContent: 'center'}}>
-            <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>We are currently displaying current temeprature along with minimum and maximum temepraturen. Please be mindfull of the heat and click on firstaid section for treating your self from any heat related injuries </Text>
+            <View style={{}}>
+              <List>
+                <ListItem>
+            <Text style={{fontSize:20}}>In this section, you can find the current outdoor temperature, as well as the minimum and maximum temperatures for today.</Text>
+            </ListItem>
+            <ListItem>
+              <Text style={{fontSize:20}}>Please be mindful of heat. Tap the first-aid section tips on treating yourself from any heat related injuries </Text>
+            </ListItem>
+              </List>
             </View>
             </View>
-            <View style={{padding:60}}>
+            <View style={{}}>
               <Button
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
@@ -113,19 +121,22 @@ export default class TempratureTab extends Component {
               </Button>
                 </View>
             </View>
+     
         </Modal>
+      <View style={{}}>
       <Fab
         active={this.state.active}
         direction="up"
         containerStyle={{}}
-        style={{ backgroundColor: '#808080' }}
+        style={{ backgroundColor:'#808080',opacity:0.4}}
         position="bottomRight"
-          onPress={() => {
-            this.setModalVisible(true);
-          }}>
+        onPress={() => {
+          this.setModalVisible(true);
+        }}>
             <Icon name="help" />
         </Fab>
-      </View> 
+        </View>
+       </View> 
       </View>
         );
       }

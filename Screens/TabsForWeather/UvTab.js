@@ -7,7 +7,7 @@ import UVItem from "../../components/uvItem";
 import { ScrollView } from 'react-native-gesture-handler';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
-const UV_CUTOFF = 2
+const UV_CUTOFF = 3
 
 export default class UvTab extends Component {
     constructor(props){
@@ -47,13 +47,12 @@ export default class UvTab extends Component {
         return (
             <View style={{flex:1}}>
             {
-
                 !currindex ?
                 <View style={styles.uvContainer}>
                 <Spinner color={colors.accentColor} style={{justifyContent: 'center', alignItems: 'center', }}></Spinner>
             </View> : 
             <View style={styles.uvContainer}>
-                <View style={{height: '60%'}}>
+                <View style={{height: '62%'}}>
                     <View style={styles.textContainer}>
                         <Text style={styles.uvText}>Current</Text>
                         <Text style={styles.uvText}>{currindex}</Text>
@@ -78,7 +77,7 @@ export default class UvTab extends Component {
                     <View style={{height: '40%'}}>
                         {
                             maxToday > UV_CUTOFF ? 
-                            <ScrollView>
+                            <ScrollView style={{}}>
                                 <H1 style={styles.suggHeader}>If you must be out</H1>
                                 <ListItem>
                                     <Text style={styles.listText}>Slip on a shirt</Text>
@@ -92,6 +91,9 @@ export default class UvTab extends Component {
                                 <ListItem>
                                     <Text style={styles.listText}>Wrap on sunglasses to protect the eyes and skin around them.</Text>
                                 </ListItem>
+                                <Text></Text>
+                                <Text></Text>
+                                <Text></Text>
                             </ScrollView> : 
                             <ScrollView>
                                 <Text style={styles.suggHeader}>Today seems a great safe day to go out!</Text>
@@ -102,8 +104,8 @@ export default class UvTab extends Component {
             </View>
 
 }
-    <View style={{height:"16.5%", backgroundColor:"black"}}>
-<Modal
+    <View style={{}}>
+                    <Modal
                     animationType="slide"
                     transparent={false}
                     visible={this.state.modalVisible}
@@ -111,7 +113,7 @@ export default class UvTab extends Component {
                       alert('Modal has been closed.');
                     }}>
                       <View style={{backgroundColor:"#FAE5B6",height:"100%"}}>
-                      <View style={{alignItems:"center",height:"60%",marginTop:20}}>
+                      <View style={{alignItems:"center",flex:1,marginTop:20}}>
                       <Text style={{fontSize:30, marginBottom:40}}>What is U.V. Radiation</Text>
                       <View style={{marginTop:20,marginBottom:30 }}>
                       <FontAwesome5 solid name="radiation-alt" style={{color:"#ADD8E6", fontSize:80}}/>
@@ -120,7 +122,7 @@ export default class UvTab extends Component {
                       <Text style={{fontSize:25,textAlignVertical: "center",textAlign: "center"}}>It's harmful radiation emitted by the sun. If the UV reading is above 3, wear sunscreen. On higher readings, avoid going out</Text>
                       </View>
                       </View>
-                      <View style={{padding:60}}>
+                      <View style={{}}>
                         <Button
                           onPress={() => {
                             this.setModalVisible(!this.state.modalVisible);
@@ -133,7 +135,7 @@ export default class UvTab extends Component {
                   active={this.state.active}
                   direction="up"
                   containerStyle={{}}
-                  style={{ backgroundColor: '#808080' }}
+                  style={{ backgroundColor: '#808080',opacity:0.4}}
                   position="bottomRight"
                     onPress={() => {
                       this.setModalVisible(true);
@@ -148,8 +150,8 @@ export default class UvTab extends Component {
 
 const styles = StyleSheet.create({
     uvContainer: {
-        //flex: 1,
-        height:"87%",
+        flex: 1,
+       // height:"87%",
         backgroundColor: 'black'
     },
     uvText: {
@@ -160,11 +162,12 @@ const styles = StyleSheet.create({
     textContainer:{
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+       justifyContent: "center",
     } ,
     listText: {
         color: 'white',
-        fontSize: 17
+        fontSize: 17,
+       // textAlignVertical: "center",textAlign: "center"
     } ,
     suggHeader: {
         textAlign: 'center',
