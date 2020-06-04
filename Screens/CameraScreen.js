@@ -49,6 +49,7 @@ export default class  CameraScreen extends Component{
   takeImageHandler = async () =>{
     // console.log("Hello");
           ImagePicker.showImagePicker({
+            cameraType:"back",
             allowsEditing: false,
             aspect: [16, 9],
             storageOptions: {

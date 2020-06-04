@@ -133,7 +133,7 @@ export default class MainScreen extends PureComponent{
                 iconName ="Weather"
                 onSelect = {() => {
                 this.props.navigation.navigate({
-                    routeName: "Weather",
+                    routeName: "TutorialScreen",
                 })
             }}/>
         </View>

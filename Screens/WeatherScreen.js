@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Grid, Col, Container,List, ListItem, Text, Content, H1, H3, Card, CardItem, Body,Tabs,Tab} from 'native-base';
-import{StyleSheet, View, TouchableOpacity} from 'react-native'
+import{StyleSheet, View, TouchableOpacity,BackHandler} from 'react-native'
 import Tab1 from './TabsForWeather/TempratureTab'
 import Tab2 from './TabsForWeather/UvTab';
 import Tab3 from './TabsForWeather/AirQuality'
 import Tab4 from './heatFirstAid'
 import { ScrollView } from 'react-native-gesture-handler';
 import {Icon} from 'react-native-elements'
+import { HeaderBackButton } from 'react-navigation-stack';
+
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
@@ -55,10 +57,10 @@ export default class WeatherScreen extends Component {
   constructor(props){
     super(props)
     this.state = {
-     
-      showRealApp: false
+      showRealApp: false,
     }
   }
+
   
   _renderItem = ({item}) => {
     return (
@@ -73,12 +75,12 @@ export default class WeatherScreen extends Component {
     )
   }
   render() {
-    const { showRealApp } = this.state;
+  //  const { showRealApp} = this.state;
     return (
-      !showRealApp ? <AppIntroSlider bottomButton showSkipButton renderItem={this._renderItem} 
-      data = {slides} onDone={() => {this.setState({showRealApp: true})}}/>
-      :
-      <Container tabStyle={styles.contaierStyle}>
+      // !showRealApp ? <AppIntroSlider bottomButton showSkipButton renderItem={this._renderItem} 
+      // data = {slides} onDone={() => {this.setState({showRealApp: true})}}/>
+      // :
+      <Container tabStyle={styles.contaierStyle}> 
         <Tabs tabBarUnderlineStyle={{backgroundColor:"white"}}  >
           <Tab tabStyle={{backgroundColor:"#F3BA36"}} activeTabStyle={{backgroundColor:"#F3BA36"}} 
             textStyle={{color:"black",fontSize:13}} activeTextStyle={{color:"white",fontSize:13}} heading="Temperature">
@@ -111,7 +113,7 @@ WeatherScreen.navigationOptions = (navigationData) =>{
           <View style={styles.headerText}>
            <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>Help</Text><Icon name="arrow-right" type='material-community'color="black"/>
            </View>
-          </TouchableOpacity>)  
+          </TouchableOpacity>)
      }
 }
 const styles = StyleSheet.create({

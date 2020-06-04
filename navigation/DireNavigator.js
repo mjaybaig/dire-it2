@@ -21,7 +21,7 @@ import MainscreenModel from "../components/MainScreenModel"
 import HelpScreen from "../Screens/TabsForWeather/HelpScreen"
 import FirstAidWebScreen from "../components/FirstAidWebisteModel"
 import TemTabScreen from "../Screens/TabsForWeather/TempratureTab"
-
+import TutorialScreen from "../Screens/TutorialScreen"
 const defaultStackOption = {
     headerStyle:{
       backgroundColor: Colors.hedTint,
@@ -47,7 +47,8 @@ const DireNavigator = createStackNavigator({
     Weather: WeatherScreen,
     TemTabScreen:TemTabScreen,
     HelpScreen:HelpScreen,
-    FirstAidWebScreen:FirstAidWebScreen
+    FirstAidWebScreen:FirstAidWebScreen,
+    TutorialScreen:TutorialScreen
 
 },{
     defaultNavigationOptions: defaultStackOption
@@ -80,10 +81,11 @@ const TabMapNavigator = createStackNavigator({
 })
 
 const TabTemNavigator = createStackNavigator({
-  Weather: WeatherScreen,
+  TutorialScreen:TutorialScreen,
   HelpScreen:HelpScreen,
+  Weather: WeatherScreen,
   TemTabScreen:TemTabScreen,
-  FirstAidWebScreen:FirstAidWebScreen
+  FirstAidWebScreen:FirstAidWebScreen,
 
 },{
   defaultNavigationOptions: defaultStackOption

@@ -58,16 +58,16 @@ console.log(date)
               <View style={{justifyContent: 'center'}}>
                 <List>
                 <ListItem>
-                  <Text style={{fontSize:20, color:"red"}}>Even if the climate seems pleasant be heedful of the heat. The temperature seems to be high</Text>
+                  <Text style={styles.subtitle}>Even if the climate seems pleasant be heedful of the heat. The temperature seems to be high</Text>
                   </ListItem>
                   <ListItem>
-                  <Text style={{fontSize:20, color:"red"}}>Limit Outdoor actitivity to the the coolest part of the day</Text>
+                  <Text style={styles.subtitle}>Limit Outdoor actitivity to the the coolest part of the day</Text>
                   </ListItem>
                   <ListItem>
-                  <Text style={{fontSize:20, color:"red"}}>Protect yourself from the sun when outside by covering exposed skin, using sunscreen and wear a hat.</Text>
+                  <Text style={styles.subtitle}>Protect yourself from the sun when outside by covering exposed skin, using sunscreen and wear a hat.</Text>
                   </ListItem>
                   <ListItem>
-                  <Text style={{fontSize:20, color:"red"}}>‘Seek’ shade and ‘slide’ on some sunglasses</Text>
+                  <Text style={styles.subtitle}>‘Seek’ shade and ‘slide’ on some sunglasses</Text>
                   </ListItem>
                 </List>
               </View>
