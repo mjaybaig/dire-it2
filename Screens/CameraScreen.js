@@ -29,8 +29,8 @@ export default class  CameraScreen extends Component{
   }
   async componentDidMount(){
     this.tflite.loadModel({
-      model: "model_unquant.tflite",
-      labels: 'labels.txt',
+      model: "model_unquant2.tflite",
+      labels: 'labels2.txt',
       numThreads: 1
     }, (err, res) => {
       if(err){

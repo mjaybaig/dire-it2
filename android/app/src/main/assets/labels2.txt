@@ -1,0 +1,6 @@
+0 Tractor
+1 Bulldozer
+2 Hay Baler
+3 Farm Slasher
+4 Quad Bike
+5 None
