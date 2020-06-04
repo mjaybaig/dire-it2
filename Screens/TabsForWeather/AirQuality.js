@@ -3,7 +3,7 @@ import {  StyleSheet, Modal,Button,ScrollView} from 'react-native'
 import axios from "axios";
 import apis from "../../env";
 import Geolocation from 'react-native-geolocation-service'
-import { H1, ListItem,Fab,List } from 'native-base';
+import { H1, ListItem,Fab,List, H2 } from 'native-base';
 import { View, Icon,Text} from "native-base";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
@@ -56,8 +56,7 @@ export default class AirQuality extends Component {
             value: null,
             advice: null,
             suggestions: null,
-            modalVisible: false,
-
+            modalVisible: false
         }
     }
     componentDidMount(){
@@ -72,10 +71,11 @@ export default class AirQuality extends Component {
             axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites?environmentalSegment=air&location=[-37.75,145.20]`, config).then(airquality => {
             // axios.get('https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites', config).then(airquality => {
                 let siteID = airquality.data.records[0].siteID;
-                axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites/${siteID}`, config).then(qualityData => {
+                axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites/670b2f1e-ce47-44bf-bb5d-c0e17d1493e0`, config).then(qualityData => {
+                // axios.get(`https://gateway.api.epa.vic.gov.au/environmentMonitoring/v1/sites/${siteID}`, config).then(qualityData => {
                     // console.log(qualityData.data)
                     let {siteHealthAdvices} = qualityData.data
-                    console.log(qualityData.data)
+                    console.log('QUALITYDATA: ', qualityData.data)
                     // console.log(siteHealthAdvices)
                     this.setState({
                         healthStatus: siteHealthAdvices[0].healthAdvice,
@@ -118,10 +118,11 @@ export default class AirQuality extends Component {
             <View style={{flex:1}}>
             <View style={{flexDirection: 'column', flex: 1, backgroundColor: this.state.healthColor, alignContent: 'center'}}>
             <ScrollView >
-                <H1 style={styles.headerStyle}> The Air Quality is</H1>
+
                 {
-                    healthStatus &&
+                    healthStatus ?
                     <View>
+                        <H1 style={styles.headerStyle}> The Air Quality is</H1>
                         <H1 style={styles.statusStyle}>{healthStatus}</H1>
                         <Text style={styles.headerStyle}>{advice}</Text>
                         <Text style={styles.headerStyle}>This reading is valid from {convFrom} to {convTo} </Text>
@@ -138,7 +139,9 @@ export default class AirQuality extends Component {
                                 )
                             })
                         }
-
+                    </View> : 
+                    <View>
+                        <H2 style={styles.headerStyle}>We provide air quality information between 09:00 AM and 06:00 PM. Please check back later!</H2>
                     </View>
                 }
                 <Text></Text>

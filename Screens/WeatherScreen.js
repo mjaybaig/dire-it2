@@ -106,7 +106,8 @@ export default class WeatherScreen extends Component {
 
 WeatherScreen.navigationOptions = (navigationData) =>{
    return {
-      headerRight: () => (
+    headerLeft: () =>(<HeaderBackButton onPress={()=>{navigationData.navigation.popToTop()}}/>),
+    headerRight: () => (
         <TouchableOpacity  onPress={() => {
            navigationData.navigation.navigate({routeName: 'HelpScreen'})
         }}>
@@ -114,6 +115,7 @@ WeatherScreen.navigationOptions = (navigationData) =>{
            <Text style={{color:"black",fontWeight:"bold",fontSize:18,padding:4}}>Help</Text><Icon name="arrow-right" type='material-community'color="black"/>
            </View>
           </TouchableOpacity>)
+       
      }
 }
 const styles = StyleSheet.create({
